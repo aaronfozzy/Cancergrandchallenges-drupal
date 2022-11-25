@@ -1,0 +1,116 @@
+/* MIXINS */
+
+//
+// Alternate buttons
+//
+@each $color,
+$value in $theme-colors {
+  .btn-#{$color} a {
+    @include button-variant($value, $value);
+  }
+}
+@each $color,
+$value in $theme-colors {
+  .btn-outline-#{$color} a {
+    @include button-outline-variant($value);
+  }
+}
+
+
+// @mixin read-more-link {
+//   display: inline-flex;
+//   // align-content: center;
+//   align-items: center;
+//   border: none;
+//   text-decoration: none;
+//   cursor: pointer;
+
+//   &::after {
+//     content: '\27F6';
+//     position: relative;
+//     display: flex;
+//     margin-top: -0.1em;
+//     padding-left: 0.4em;
+//     font-size: 1.45em;
+//     line-height: 1;
+//     transition: transform .5s ease;
+//     transform: translateX(0);
+//   }
+
+//   &:hover {
+//     color: inherit;
+
+//     &::after {
+//       transform: translateX(0.4em);
+//     }
+//   }
+// }
+
+@mixin read-more-arrow($arrow-color: #ffffff) {
+  $color: str-replace('' + $arrow-color, '#', '%23');
+  $icon-svg-image-arrow: url("data:image/svg+xml;charset=UTF-8,%3csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 25.44 6' enable-background='new 0 0 25.44 6' xml:space='preserve'%3e%3cpolygon fill='#{$color}' points='25.44,3 22.43,6 22.06,5.63 24.42,3.26 0,3.26 0,2.74 24.42,2.74 22.06,0.37 22.43,0'/%3e%3c/svg%3e");
+
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    position: relative;
+    display: flex;
+    margin: 0;
+    margin-top: 0.25em;
+    margin-left: 0.8em;
+    padding: 0;
+    width: 59px;
+    height: 14px;
+    background-color: transparent;
+    background-image: $icon-svg-image-arrow;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+    line-height: 1;
+    transition: transform .5s ease;
+    transform: translateX(0);
+  }
+
+  &:hover {
+    &::after {
+      transform: translateX(0.4em);
+    }
+  }
+}
+
+// define container
+@mixin container {
+
+  @media screen and (min-width: $md) {
+    margin: 0 auto;
+    max-width: 720px;
+  }
+
+  @media screen and (min-width: $lg) {
+    max-width: 960px;
+  }
+
+  @media screen and (min-width: $xl) {
+    max-width: 1140px;
+  }
+}
+
+
+// define breakpoint
+@mixin mq($bp) {
+  @media screen and (min-width: $bp) {
+    @content
+  }
+}
+
+
+// convert px to rem
+@function toRem ($v) {
+  $remValue: ($v * 0.05) + rem;
+
+  @return $remValue;
+}

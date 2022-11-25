@@ -1,0 +1,21 @@
+// Bootstrap variables override.
+@import "variables";
+// Typography styles.
+@import "typography";
+// Bootstrap.
+@import "../node_modules/bootstrap/scss/bootstrap";
+// Material design.
+//@import "../node_modules/mdbootstrap/scss/mdb-free.scss";
+// Base components.
+@import "components-base";
+// Mixins.
+@import "mixins";
+// Custom components.
+@import "./components/custom/fonts";
+@import "./components/custom/general";
+@import "./components/custom/layout/*";
+@import "./components/custom/paragraphs/*";
+@import "./components/custom/forms/*";
+@import "./components/custom/views/*";
+@import "./components/custom/pages/partials/*";
+@import "./components/custom/pages/*";

@@ -1,0 +1,64 @@
+/* Bootstrap Variables Override */
+
+// Colors.
+$primary-shade: rgb(255, 78, 46);
+$primary-light: lighten($primary-shade, 37%);
+$primary-dark: darken($primary-shade, 12%);
+$accent-shade: #0079c0;
+$accent-light: lighten($accent-shade, 37%);
+$accent-dark: darken($accent-shade, 12%);
+
+// Reassign color vars to semantic color scheme.
+$red: #dc3545;
+$yellow: #ffc107;
+$green: #28a745;
+$cyan: #17a2b8;
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-800: #343a40;
+$theme-colors: (primary: $accent-shade, secondary: $primary-shade, success: $green, info: $cyan, warning: $yellow, danger: $red, light: $gray-100, dark: $gray-800);
+$brand-primary: $accent-shade;
+//$brand-success: $green;
+//$brand-info: $teal;
+//$brand-warning: $orange;
+//$brand-danger: $red;
+$brand-inverse: $primary-shade;
+
+// Body.
+$body-bg: $white;
+$body-color: #000;
+$inverse-bg: $primary-shade;
+$inverse-color: $white;
+
+// Links.
+$link-color: $accent-shade;
+$link-decoration: none;
+$link-hover-color: $accent-dark;
+$link-hover-decoration: underline;
+
+// Comments.
+$comment-spacer-x: 1.25em;
+$comment-spacer-y: 1.25em;
+
+// Responsive font sizes.
+$enable-responsive-font-sizes: true;
+$enable-shadows: false;
+$enable-gradients: false;
+
+// Gradients
+$gradient-yellow-purple-colors: #ffe600, #ffa51e ,#ff3232, #aa6ed7;
+$gradient-yellow-purple: linear-gradient(to right bottom, $gradient-yellow-purple-colors);
+
+// website fonts
+$heading-font: 'Bw Gradual', sans-serif;
+$body-font: 'Roboto', sans-serif;
+
+$icon-svg-image-arrow-default-white: url("data:image/svg+xml;charset=UTF-8,%3csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 25.44 6' enable-background='new 0 0 25.44 6' xml:space='preserve'%3e%3cpolygon fill='%23FFFFFF' points='25.44,3 22.43,6 22.06,5.63 24.42,3.26 0,3.26 0,2.74 24.42,2.74 22.06,0.37 22.43,0'/%3e%3c/svg%3e");
+$icon-svg-image-arrow-search-black: url("data:image/svg+xml;chrset=UTF-8,%3csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 60.16 14' enable-background='new 0 0 60.16 14' xml:space='preserve'%3e%3cpolygon fill='%23000000' points='60.16,7 53.16,14 52.07,12.91 57.2,7.77 0,7.77 0,6.23 57.2,6.23 52.07,1.09 53.16,0 '/%3e%3c/svg%3e");
+
+// breakpoints
+$sm:    576px;
+$md:    768px;
+$lg:    992px;
+$xl:    1200px;
+$xxl:   1520px;
