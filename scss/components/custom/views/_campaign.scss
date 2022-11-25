@@ -1,0 +1,243 @@
+.view-campaign{
+  .view-content{
+    display: block;
+    @media (min-width:992px){
+      display: flex;
+      justify-content: space-between;
+    }
+    .campaign-widget{
+      margin-bottom: 30px;
+      @media (min-width:992px){
+        width: calc(50% - 40px);
+        max-width: 554px;        
+      }
+      .top{
+        display: flex;
+        align-items: center;
+        margin-bottom: 55px;
+        h4{
+          width: calc(100% - 165px);
+          margin-right: 20px;
+          font-size: 1.8em;
+        }
+        img{
+          width: 145px;
+          height: auto;
+        }
+      }
+      .boxed{
+        padding-left: 45px;
+        padding-right: 45px;
+        width: calc(100% - 5px);
+        position: relative;
+        .team-challenge{
+          margin-bottom: 0;
+          p{
+            margin-bottom: 5px;
+          }
+        }
+        .large{
+          p{
+            margin-right: 20px;
+            margin-bottom: 0px;
+          }
+        }
+        .more-link{
+          @include read-more-arrow;
+          color: white;
+          margin-bottom: 30px;
+          font-size: 0.8em;
+        }
+        h2{
+          font-size: 2.31em;
+        }
+        .campaign-init{
+          position: absolute;
+          right: 20px;
+          top: 20px;
+          color: white;
+          text-decoration: none;
+          width: 28px;
+          height: 28px;
+          text-indent: -9999px;
+          &:before{
+            content:"";
+            display: block;
+            width: 100%;
+            height: 5px;
+            background: white;
+            position: absolute;
+            top: calc(50% - 3px);
+            right: 0;
+          }
+          &:after{
+            content:"";
+            display: block;
+            width: 5px;
+            height: 100%;
+            background: white;
+            position: absolute;
+            top: 0;
+            right: calc(50% - 3px);
+            transition: all ease 0.3s;
+          }
+          &.active{
+            &:after{
+              height: 1%;
+              top: 50%;
+            }
+
+          }
+        }
+        .hidden{
+          > p{
+            &:first-child(){
+              font-family: "Bw Gradual", serif;
+              font-weight: bold;
+              font-size: 1.1em;
+              margin-bottom: 0;
+            }
+          }
+        }
+        .funded-by-logos{
+          display: flex;
+          > div{
+            margin-right: 10px;
+          }
+        }
+        .stat-circles{
+          padding: 12px;
+          position: relative;
+          margin-bottom: 40px;
+          @media (min-width:992px){
+            height: 42vw;
+            min-height: 220px;
+            max-height: 440px;      
+          }
+          @media (min-width:1200px){
+            height: 33vw;
+            min-height: 220px;
+            max-height: 400px;            
+          }
+          .stat-circle{
+            background: white;
+            border-radius: 100%;
+            position: relative;
+            background: $gradient-yellow-purple;
+            padding: 11px;
+            margin-bottom: 0;
+            &-inner{
+              background: white;
+              border-radius: 100%;
+              text-align: center;
+              margin-bottom: 0;
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-wrap: nowrap;
+              background: white;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              color: black;
+              span{
+                display: block;
+                width: 100%;
+                font-family: "Bw Gradual", serif;
+                font-weight: bold;
+              }
+            }
+          }
+          .investigators{
+            width: 180px;
+            height: 180px;
+            @media (min-width:992px){
+              max-width: 180px;
+              max-height: 180px;
+              width: 16.4vw;
+              height: 16.4vw;
+              position: absolute;
+              left: 0;
+              bottom: 0;
+            }
+            span{
+              font-size: 87.1px;
+              line-height: 0.8em;
+              display: block;
+            }
+            p{
+              margin-bottom: 0;
+              font-size: 0.7em;
+            }
+          }
+          .invested{
+            text-align: center;
+            width: 280px;
+            height: 280px;
+            margin-left: auto;
+            @media (min-width:992px){
+              margin-left: 0;
+              width: 23.3vw;
+              height: 23.3vw;
+              max-width: 280px;
+              max-height: 280px;
+              position: absolute;
+              right: 0;
+            }
+            span{
+              font-size: 72.71px;
+              line-height: 1em;
+              margin-top: 0.4em;
+            }
+            p{
+              margin-bottom: 0;
+            }
+          }
+        }
+        .campaign-leaders{
+          .view-content{
+            .team-leader{
+              display: flex;
+              justify-content: center;
+              margin-bottom: 25px;
+              .team-leader-photo{
+                width: 80px;
+                height: 80px;
+                position: relative;
+                display: block;
+                border-radius: 100%;
+                overflow: hidden;
+                img{
+                  position: absolute;
+                  height: auto;
+                  width: auto;
+                  max-width: 100%;
+                  max-height: 100%;
+                  object-fit: cover;
+                }
+              }
+              .leader-content{
+                width: calc(100% - 100px);
+                margin-left: 20px;
+                p{
+                  font-family: "Bw Gradual", serif;
+                  font-size: 0.8rem;
+                  margin-bottom: 0;
+                  &:first-child(){
+                    font-size: 1rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .view-content.row {
+          @media (max-width: 768px){
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+  }
+}

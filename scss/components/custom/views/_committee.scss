@@ -1,0 +1,202 @@
+.block-views-blockcommittee-block-1 {
+  > h2 {
+    text-align: center;
+  }
+}
+
+.view-committee {
+
+    .attachment {
+
+      .committee-memmber-thumb {
+        margin: 1.5rem 2rem;
+
+        .slick-track {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+
+          .slick-slide {
+            outline: none;
+
+            div {
+              padding: 5px;
+              border-radius: 50%;
+              background: none;
+              width: 80px;
+              height: 80px;
+
+              img {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                filter: grayscale(1);
+              }
+              &:hover {
+                background: linear-gradient(to right bottom, #ffe600, #ffa51e, #ff3232, #aa6ed7);
+
+                img {
+                  filter: grayscale(0);
+                  transition: all .3s ease;
+                }
+              }
+            }
+            &.current {
+              div {
+                background: linear-gradient(to right bottom, #ffe600, #ffa51e, #ff3232, #aa6ed7);
+
+                img {
+                  filter: grayscale(0);
+                  transition: all .3s ease;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .view-content {
+      .slick-track {
+        display: flex;
+
+        .slick-slide {
+          display: flex;
+
+          // @media (min-width: 768px) {
+          //   height: auto;
+          // }
+        }
+      }
+
+      .member {
+        display: flex;
+        justify-content: space-between;
+        padding: 2.5rem;
+        color: $white;
+
+        @include media-breakpoint-down(md) {
+          flex-direction: column-reverse;
+          justify-content: flex-end;
+          padding: 1rem;
+        }
+
+        .member-content {
+          @include media-breakpoint-up(lg) {
+            padding-right: 4rem;
+          }
+           /* width */
+           ::-webkit-scrollbar {
+            width: 6px;
+          }
+
+          /* Track */
+          ::-webkit-scrollbar-track {
+            background: #555;
+          }
+
+          /* Handle */
+          ::-webkit-scrollbar-thumb {
+            background: #222;
+          }
+
+          /* Handle on hover */
+          ::-webkit-scrollbar-thumb:hover {
+            background: #333;
+          }
+
+          .content-wrapper {
+            padding-right: 10px;
+            padding-bottom: 10px;
+
+            // @media (min-width: 768px) {
+            //   max-height: 420px;
+            //   overflow-y: auto;
+            // }
+          }
+
+          .member-title {
+            @extend h1;
+            font-weight: bold;
+            margin-bottom: 2rem;
+
+            @include media-breakpoint-down(md) {
+              text-align: center;
+            }
+          }
+
+          .member-quote {
+            .subtitle {
+              max-width: 48%;
+              text-transform: uppercase;
+              border-bottom: 3px solid $gray-800;
+            }
+            p:not(.subtitle){
+              font-size: 0.9rem;
+            }
+          }
+
+          .member-addition-wrapper {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            .member-addition {
+              flex-basis: 48%;
+
+              .subtitle {
+                text-transform: uppercase;
+                border-bottom: 3px solid $gray-800;
+              }
+
+              .info {
+                font-size: 0.9rem;
+              }
+            }
+          }
+        }
+
+        .member-image {
+          display: flex;
+          flex-shrink: 0;
+
+          @include media-breakpoint-down(md) {
+            //margin:auto; //remove a large gap above the headshot
+            justify-content: center;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+          }
+
+          img {
+            border-radius: 50%;
+            filter: grayscale(1);
+            width: 250px;
+            height: 250px;
+          }
+        }
+      }
+
+      .slick-arrow {
+        border: 0;
+        border-radius: 50%;
+        font-size: 0;
+        height: 30px;
+        outline: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        z-index: 1;
+
+        &.slick-prev {
+          background: #000 url('../images/icons/prev.svg') no-repeat center;
+          left: -1.5rem;
+        }
+
+        &.slick-next {
+          background: #000 url('../images/icons/next.svg') no-repeat center;
+          right: -1.5rem;
+        }
+      }
+    }
+}

@@ -1,0 +1,19 @@
+.latest-publication-tweet {
+  margin-bottom: 70px;
+
+  .bg {
+    background: #000;
+  }
+
+  .content-wrapper {
+    @media (min-width: 1024px) {
+      display: flex;
+    }
+
+    > div {
+      @media (min-width: 1024px) {
+        width: 50%;
+      }
+    }
+  }
+}

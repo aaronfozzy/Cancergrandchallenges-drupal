@@ -1,0 +1,371 @@
+.block-views-blockpublications-block-1 {
+  @extend .container;
+  clear: both;
+  margin-top: 5em;
+  h1,
+  h2 {
+    font-size: 1.578rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    @media (min-width: 768px) {
+      margin: 0 -15px 30px;
+    }
+  }
+  .content {
+    margin: 0 -15px;
+  }
+}
+
+.filtered-publications {
+  .view-filters {
+    .form-row {
+      margin: 0 -15px;
+    }
+    legend {
+      font-family: 'Bw Gradual', serif;
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+    .fieldgroup {
+      margin: 0 0 30px;
+      padding: 0 30px;
+      width: 100%;
+      @media (min-width: 768px) {
+        padding: 0 15px;
+        width: 25%;
+      }
+    }
+    .fieldset-wrapper {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      .form-radios,
+      .form-checkboxes {
+        left: 0;
+        max-height: 222px;
+        overflow: auto;
+        position: absolute;
+        top: 38px;
+        width: 100%;
+        z-index: 1;
+      }
+    }
+    .description {
+      background: #fff;
+      border: 1px solid;
+      color: #000 !important;
+      cursor: pointer;
+      padding: 10px;
+      font-size: 0.8rem;
+      line-height: 1;
+      order: -1;
+      position: relative;
+      &::after {
+        background: url('../images/icons/prev_b.svg') no-repeat center right;
+        content: '';
+        display: block;
+        height: 13px;
+        position: absolute;
+        right: 10px;
+        transform: translateY(-50%) rotate(-90deg);
+        top: 50%;
+        width: 15px;
+      }
+      &.active::after {
+        transform: translateY(-50%) rotate(90deg);
+      }
+    }
+    .form-radios {
+      background: #dcdcdc;
+      display: none;
+      .radio {
+        border-bottom: 1px solid #fff;
+        line-height: 16px;
+        min-height: auto;
+        padding: 0;
+        &:last-of-type {
+          border: 0;
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
+      label {
+        font-size: 0.8rem;
+        line-height: 1;
+        margin-left: 0px;
+        cursor: pointer;
+        padding: 8px 10px 10px 37px;
+        &::before {
+          border: 1px solid #000;
+          border-radius: 0;
+          height: 16px;
+          left: 0px;
+          top: 0;
+          width: 16px;
+          margin: 10px;
+        }
+        &::after {
+          opacity: 0;
+          top: 0rem;
+          left: 0rem;
+          margin: 10px;
+        }
+      }
+      input:checked~label::before {
+        background: #000 url('../images/checked.svg') no-repeat center;
+      }
+    }
+    .form-checkboxes {
+      background: #dcdcdc;
+      display: none;
+      padding: 10px 0;
+      .checkbox {
+        border-bottom: 1px solid #fff;
+        line-height: 16px;
+        margin-bottom: 10px;
+        min-height: auto;
+        padding: 0 10px 10px 10px;
+        &:last-of-type {
+          border: 0;
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
+      label {
+        font-size: 0.8rem;
+        line-height: 1;
+        margin-left: 20px;
+        cursor: pointer;
+        &::before {
+          border: 1px solid #000;
+          border-radius: 0;
+          height: 16px;
+          left: -20px;
+          top: 0;
+          width: 16px;
+        }
+        &::after {
+          opacity: 0;
+          top: 0rem;
+          left: -1.1rem;
+        }
+      }
+      input:checked~label::before {
+        background: #000 url('../images/checked.svg') no-repeat center;
+      }
+    }
+    .form-actions {
+      margin: 0 0 30px;
+      padding: 0 30px;
+      width: 100%;
+      .form-submit {
+        background-color: #000000;
+        border: none;
+        border-radius: 0;
+        font-size: .8rem;
+        line-height: 16px;
+        padding: 10px;
+        width: 100%;
+      }
+      .form-submit:first-child {
+        margin-bottom: 30px;
+      }
+      @media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 15px;
+        width: 25%;
+        .form-submit {
+          width: calc((100% - 15px) / 2);
+        }
+        .form-submit:first-child {
+          max-height: 38px;
+          margin-bottom: 0;
+          position: relative;
+          &::before {
+            background-color: #000000;
+            bottom: 0;
+            content: '';
+            display: inline-block;
+            height: 10px;
+            left: 0;
+            position: absolute;
+            width: 100%;
+          }
+        }
+      }
+      @media (min-width: 1200px) {
+        .form-submit:first-child {
+          position: static;
+          &::before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+  .view-content {
+    justify-content: center;
+    @media (min-width: 768px) {
+      justify-content: flex-start;
+    }
+  }
+  .views-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 24px;
+    background-color: black;
+    font-size: 0.85rem;
+    color: white;
+    min-height: 264px;
+    width: 100%;
+    a {
+      font-size: inherit;
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 0.075em solid transparent;
+      transition: border 0.5s;
+      &:hover,
+      &:focus {
+        border-bottom-color: currentColor;
+      }
+    }
+    p {
+      font-size: inherit;
+      margin: 0;
+    }
+    .label,
+    .value {
+      display: inline-block;
+      width: 100%;
+    }
+    .label {
+      border-bottom: 1px solid white;
+      text-transform: uppercase;
+      padding-bottom: 2px;
+    }
+    .value {
+      padding-top: 2px;
+    }
+  }
+  .views-row+.views-row {
+    margin-top: 24px;
+  }
+  .views-field {
+    &-left {
+      flex: 75;
+      flex-basis: 100%;
+      @media (min-width: 992px) {
+        flex-basis: 0;
+      }
+    }
+    &-right {
+      flex: 64;
+      flex-basis: 100%;
+      display: flex;
+      flex-direction: column;
+      // margin-left: 48px;
+      // margin-top: -16px;
+      @media (min-width: 992px) {
+        flex-basis: 0;
+        margin-left: 48px;
+        margin-top: -16px;
+        min-height: 215px;
+      }
+    }
+    &-column-group {
+      flex: none;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    &-title {
+      font-size: 1.6rem;
+      line-height: 1.3;
+    }
+    &-field-publication {
+      &-abstract {
+        margin-top: 18px;
+        font-size: 0.75rem;
+        line-height: 1.5;
+        overflow-y: auto;
+        max-height: calc(0.75rem * 7 * 1.5); // 0.75rem - font size; 7 - number of lines; 1.5 - line height
+        &::-webkit-scrollbar-track {
+          background-color: #5e5e5e;
+          background-image: linear-gradient(90deg, #000000 40%, #ffffff 40%, #ffffff 60%, #000000 60%);
+        }
+        &::-webkit-scrollbar {
+          width: 10px;
+          background-color: #5e5e5e;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: #ffffff;
+        }
+      }
+      &-team,
+      &-journal,
+      &-authors,
+      &-date,
+      &-link {
+        flex: 1;
+        flex-basis: 100%;
+        margin-top: 16px;
+        @media (min-width: 576px) {
+          flex-basis: 0;
+        }
+        @media (min-width: 992px) {
+          flex-basis: 100%;
+        }
+        @media (min-width: 1200px) {
+          flex-basis: 0;
+        }
+      }
+      &-team {}
+      &-journal {
+        @media (min-width: 576px) {
+          margin-left: 16px;
+        }
+        @media (min-width: 992px) {
+          margin-left: 0;
+        }
+        @media (min-width: 1200px) {
+          margin-left: 16px;
+        }
+      }
+      &-authors {
+        margin-left: auto;
+        width: 100%;
+        .value {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+        }
+      }
+      &-date {}
+      &-link {
+        @media (min-width: 576px) {
+          margin-left: 16px;
+        }
+        @media (min-width: 992px) {
+          margin-left: 0;
+        }
+        @media (min-width: 1200px) {
+          margin-left: 16px;
+        }
+      }
+      &-link-1 {
+        flex-basis: 100%;
+        margin-top: 16px;
+        font-weight: 700;
+        @media (min-width: 576px) {
+          flex-basis: 100%;
+        }
+        a {
+          @include read-more-arrow;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+.paragraph--type--block-text {
+  margin-top: 5em;
+
+  &.adaptive-img {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .col-12 {
+    display: flex;
+    justify-content: center;
+  }
+
+  .field--name-field-p-block-text {
+    text-align: center;
+    padding-left: 5rem;
+    padding-right: 5rem;
+
+    @include media-breakpoint-down(lg) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.team-list {
+  background: #000000;
+  padding: 1.5rem 0;
+
+  @include mq($md) {
+    margin-top: 0;
+    padding: 3rem 0;
+  }
+
+  .field--name-field-p-block-text {
+    a {
+      color: #ffffff;
+      font-size: 1.2rem;
+      line-height: 1.2rem;
+
+      @include mq($lg) {
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+      }
+    }
+  }
+}
+
+.shortlist-page {
+  margin: 2rem 0 !important;
+
+  @include mq($lg) {
+    margin: 3.5rem 0 !important;
+  }
+
+  .field--name-field-p-block-text {
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.after-embed-video {
+  margin: 0 !important;
+
+  @include mq($lg) {
+    margin-bottom: 2rem !important;
+  }
+}
+
+.shortlist-page,
+.after-embed-video {
+  .field--name-field-p-block-text {
+    h2 {
+      font-family: $heading-font;
+      font-weight: bold;
+    }
+  }
+}

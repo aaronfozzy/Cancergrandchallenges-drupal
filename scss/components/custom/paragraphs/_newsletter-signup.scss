@@ -1,0 +1,25 @@
+.paragraph--type--newsletter-signup {
+    background: black;
+    color: white;
+    @media(max-width:768px){
+        h3 {
+            font-size:1rem;
+            line-height:1.1rem;
+        }
+    }
+
+    input {
+        border-radius: 0;
+        background: black;
+        font-size: 15px;
+        
+    }
+    
+    .btn-subscribe {
+        border-color: white;
+        border-radius: 0;
+        background: white;
+        font-size: 15px;
+    }
+    
+}

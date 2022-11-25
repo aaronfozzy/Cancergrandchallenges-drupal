@@ -1,0 +1,142 @@
+.team-carousel-container {
+  max-width: 100%;
+  width: 100%;
+
+  .team-carousel {
+    display: flex;
+
+    .item {
+      position: relative;
+      outline: none;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      &-toggle {
+        position: absolute;
+        display: flex;
+        bottom: 10px;
+        right: 10px;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background: #000;
+        z-index: 10;
+
+        &:before,
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 20%;
+          top: 45%;
+          width: 12px;
+          border: 1px solid #FFF;
+          transition: .5s ease;
+          border-radius: 50px;
+        }
+        &:before {
+          transform: rotate(90deg);
+        }
+        &:after {
+          transform: rotate(0deg);
+        }
+
+        &.open {
+          background: #FFF;
+
+          &:before,
+          &:after {
+            border: 1px solid #000;
+          }
+          &:before {
+            transform: rotate(0deg);
+          }
+          &:after {
+            transform: rotate(0deg);
+          }
+        }
+      }
+
+      &-caption {
+        opacity: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-width: 100%;
+        min-height: 40%;
+        background: #000;
+        color: #FFF;
+        padding: 10px;
+        transition: .5s ease;
+
+        @include media-breakpoint-down(sm) {
+          padding: 5px;
+        }
+
+        .member-name {
+          margin-bottom: 5px;
+          line-height: 1.3rem;
+
+          @include media-breakpoint-down(sm) {
+            line-height: 0.8rem;
+          }
+
+          a {
+            font-family: 'Bw Gradual', serif;
+            color: #FFF;
+            font-size: 1rem;
+
+            @include media-breakpoint-down(sm) {
+              font-size: 0.6rem;
+            }
+          }
+        }
+
+        p {
+          font-family:'Roboto', sans-serif;
+          font-size: 0.7rem;
+
+          strong:not(:last-of-type):after {
+            content: ', ';
+          }
+
+          @include media-breakpoint-down(sm) {
+            font-size: 0.5rem;
+          }
+        }
+      }
+
+      &-caption.open {
+        opacity: 1;
+      }
+    }
+  }
+
+  .slick-arrow {
+    border: 0;
+    border-radius: 50%;
+    font-size: 0;
+    height: 2.5rem;
+    width: 2.5rem;
+    outline: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+
+    &.slick-prev {
+      background: #000 url('../images/icons/prev.svg') no-repeat center;
+      left: .5rem;
+    }
+
+    &.slick-next {
+      background: #000 url('../images/icons/next.svg') no-repeat center;
+      right: .5rem;
+    }
+  }
+
+}

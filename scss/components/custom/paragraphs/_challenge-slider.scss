@@ -1,0 +1,54 @@
+.paragraph--type--challenge-slider {
+    .slides-carousel {
+        max-width:100%;
+        margin:auto;
+        position:relative;
+        button:focus {
+            outline:0;
+        }
+        #data-slider {
+            max-width:90%;
+            margin:auto;
+        }
+        
+        .item {
+            padding: 20px 5px;
+            img {
+                height:auto;
+            }
+            &-content {
+                color:white;
+                .h1 {
+                    
+                    max-width: 320px;
+                }
+                .subtitle {
+                    font-size:0.79rem;
+                }
+                p {
+                    max-width:380px;
+                }
+                .gradient-link {
+                    color:white;
+                    position:relative;
+                    font-size:1.05rem;
+                    max-width:200px;
+                    display:block;
+                    text-decoration:underline;
+                  
+                    // &:after {
+                    //     content:' ';
+                    //     background:url('../img/underline.png') no-repeat;
+                    //     background-size:contain;
+                    //     background-position:bottom left;
+                    //     height:3px;
+                    //     width:100%;
+                    //     display:block;
+                        
+
+                    // }
+                }
+            }
+        }
+    }
+}

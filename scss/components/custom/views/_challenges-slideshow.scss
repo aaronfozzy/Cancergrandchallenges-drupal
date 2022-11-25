@@ -1,0 +1,142 @@
+.view-challenges-slideshow {
+
+  .challenge-slider {
+    margin: auto;
+    max-width: 100%;
+
+    .data-slider {
+      width: 90%;
+      margin: auto;
+      display: flex;
+
+      @include media-breakpoint-down(sm) {
+        flex-direction: column;
+      }
+    }
+
+    .item-content-wrapper {
+      display: flex;
+      justify-content: space-between;
+      padding: 25px;
+      width: 100%;
+      @include media-breakpoint-down(sm) {
+        flex-wrap: wrap;
+      }
+
+      .item-content {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        min-width: 45%;
+        margin-right: 5%;
+
+        .h1 {
+          @extend h2;
+          font-weight: 500;
+          max-width: 320px;
+          font-size: 2rem;
+          @media (max-width: 1000px) {
+            font-size: 1.7rem;
+            line-height: 2rem;
+          }
+          @media (max-width: 865px) {
+            font-size: 1.4rem;
+            line-height: 1.8rem;
+          }
+        }
+
+        .subtitle {
+          @extend h3;
+          font-size: 0.79rem;
+        }
+
+        p {
+          max-width: 380px;
+        }
+
+        .gradient-link {
+          color: white;
+          position: relative;
+          font-size: 1.05rem;
+          max-width: 200px;
+          display: block;
+          text-decoration: underline;
+        }
+
+        @include media-breakpoint-down(sm) {
+          margin-bottom: 25px;
+        }
+      }
+
+      .item-image img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .badge-link {
+        margin-top: auto;
+      }
+    }
+
+    .slick-arrow {
+      border: 0;
+      border-radius: 50%;
+      font-size: 0;
+      height: 2.5rem;
+      width: 2.5rem;
+      outline: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+
+      &.slick-prev {
+        background: #000 url('../images/icons/prev.svg') no-repeat center;
+        left: -2.65rem;
+      }
+
+      &.slick-next {
+        background: #000 url('../images/icons/next.svg') no-repeat center;
+        right: -2.65rem;
+      }
+    }
+
+    .slick-dots {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+
+      li {
+        position: relative;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+        padding: 0;
+        cursor: pointer;
+
+        button {
+          font-size: 0;
+          line-height: 0;
+          display: block;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          padding: 5px;
+          cursor: pointer;
+          color: transparent;
+          border: 0;
+          outline: none;
+          background: #000;
+        }
+      }
+
+      .slick-active {
+        button {
+          background: #777;
+        }
+      }
+
+    }
+  }
+}

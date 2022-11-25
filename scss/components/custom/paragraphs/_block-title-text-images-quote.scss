@@ -1,0 +1,68 @@
+.paragraph--type--block-title-text-images-quote {
+
+    .gradient-title-block {
+        max-width:440px;
+        margin:auto;
+
+
+        .gradient-wrapper {
+            padding: 15px;
+            text-align: center;
+            .bg-black {
+                padding: 30px;
+                color: #fff;
+                font-size: 2rem;
+                line-height: 2.4rem;
+            }
+        }
+
+    }
+
+    .side {
+        @media (min-width:768px) {
+            max-width: 80%;
+            margin: auto;
+        }
+
+        &--logo {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            @media (min-width:1024px) {
+              margin-bottom: 140px;
+            }
+
+            img {
+                max-height: 68px;
+                max-width: 100%;
+                width: auto;
+                height:auto;
+            }
+        }
+
+        &--picture {
+            width:100%;
+            display:flex;
+            justify-content: center;
+
+            img {
+
+                max-width: 100%;
+                height:auto;
+                margin:auto;
+            }
+
+        }
+        &--text-bottom{
+
+            margin:auto;
+        }
+
+        blockquote {
+          @media (min-width:1024px) {
+            margin-top:140px;
+          }
+        }
+    }
+
+}

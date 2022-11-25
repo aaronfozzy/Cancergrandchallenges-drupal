@@ -1,0 +1,54 @@
+.block-twitter-tweets {
+  padding: 40px 15px;
+
+  @media (min-width: 1024px) {
+    padding: 40px 0 40px 40px;
+  }
+
+  h2 {
+    color: #fff;
+    font-family: 'Bw Gradual', serif;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin-bottom: 30px;
+  }
+
+  .tweet-wrapper {
+    display: flex;
+
+    .tweet-profile-image {
+      background: url('../images/twitter.svg') no-repeat center top;
+      flex: none;
+      margin-right: 15px;
+      max-width: 100%;
+      padding: 0;
+      width: 25px;
+
+      img {
+        display: none;
+      }
+    }
+
+    .tweet-text {
+      border: 0;
+      margin: 0;
+      max-width: 100%;
+      padding: 0;
+
+      p {
+        color: #fff;
+        margin: 0;
+      }
+    }
+  }
+
+  .tweet-link {
+    margin-top: 15px;
+
+    a {
+      @include read-more-arrow;
+      color: #ffffff;
+      font-size: 0.8rem;
+    }
+  }
+}

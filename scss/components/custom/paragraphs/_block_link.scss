@@ -1,0 +1,65 @@
+.paragraph--type--link {
+  margin-bottom: 0 !important;
+  padding: 30px 0;
+
+  @include mq($lg) {
+    padding: 50px 0;
+  }
+
+  &.light {
+    background: #000000;
+
+    a {
+      background: #ffffff;
+      color: #000000;
+    }
+  }
+
+  &.dark {
+    background: #ffffff;
+
+    a {
+      background: #000000;
+      color: #ffffff;
+    }
+  }
+
+  .link-wrapper {
+    text-align: center;
+  }
+
+  a {
+    border-radius: 50%;
+    display: inline-block;
+    font-family: $heading-font;
+    font-size: 0.8rem;
+    height: 100px;
+    line-height: 0.8rem;
+    margin: 0 15px;
+    position: relative;
+    text-align: center;
+    width: 100px;
+
+    @include mq($lg) {
+      font-size: 1.5rem;
+      height: 200px;
+      line-height: 1.5rem;
+      margin: 0 30px;
+      width: 200px;
+    }
+
+    .link-title {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+
+    &:hover {
+      .link-title {
+        text-decoration: underline;
+      }
+    }
+  }
+}

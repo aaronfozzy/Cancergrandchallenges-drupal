@@ -1,0 +1,96 @@
+.block-views-blockpublications-block-2 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: #ffffff;
+  padding: 40px 15px 0 15px;
+
+  @media (min-width: 1024px) {
+    padding: 40px 40px 40px 0;
+  }
+
+  &::before {
+    @media (min-width: 1024px) {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 40px;
+      right: 0;
+      bottom: 40px;
+      width: 1px;
+      background: linear-gradient(0deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+    }
+  }
+
+  .content,
+  .content > div,
+  .view-display-id-block_2,
+  .view-content.row,
+  .views-row {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .view-content {
+    &.row {
+      margin: 0;
+    }
+  }
+
+  .views-row {
+    & > .views-field.views-field-field-publication-date {
+      margin-left: 0; // TODO: temp fix
+    }
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .read-more-link {
+    @include read-more-arrow;
+    font-size: 0.8rem;
+    margin-top: 15px;
+  }
+
+  h2 {
+    font-family: 'Bw Gradual', serif;
+    line-height: 1;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .field-content {
+
+  }
+
+  .views-field {
+    &-group {
+      display: flex;
+      margin-top: 16px;
+    }
+
+    &-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 25px;
+    }
+
+    &-field-publication-team {
+      font-size: 0.8rem;
+    }
+
+    &-field-publication-date {
+      font-size: 0.8rem;
+      margin-left: 16px;
+    }
+
+    &-view-node {
+      margin-top: auto;
+    }
+  }
+
+
+}

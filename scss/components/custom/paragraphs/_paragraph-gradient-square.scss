@@ -1,0 +1,78 @@
+.paragraph--type--block-gradient-square {
+  margin-top: 5em;
+
+  &.center {
+    .row {
+      justify-content: center;
+    }
+  }
+
+  &.with-link {
+    padding-bottom: 65px;
+  }
+
+  &.gradient-1 .gradient-wrapper {
+    background: linear-gradient(
+      to right bottom,
+      #ffe600,
+      #ffa51e,
+      #ff3232,
+      #aa6ed7
+    );
+    padding: 20px;
+  }
+
+  .white-bg {
+    background: #fff;
+    padding: 40px;
+    position: relative;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      padding: 40px 120px;
+    }
+  }
+
+  .field--name-field-p-block-title {
+    font-family: $heading-font;
+    font-size: 1.578rem;
+    margin-bottom: 20px;
+    font-weight: normal;
+  }
+
+  .field--name-field-p-block-text {
+    p {
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .field--type-link {
+    margin-top: 40px;
+
+    a {
+      align-items: center;
+      background: #000;
+      border-radius: 50%;
+      bottom: -85px;
+      color: #fff;
+      display: flex;
+      height: 160px;
+      justify-content: center;
+      left: 50%;
+      padding: 0 25px;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      text-decoration: underline;
+      width: 160px;
+
+      @media (min-width: 768px) {
+        left: auto;
+        right: 35px;
+        transform: none;
+      }
+    }
+  }
+}

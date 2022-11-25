@@ -1,0 +1,46 @@
+.paragraph-invested-to-date {
+  h4 {
+    font-weight: 500;
+    margin-bottom: 30px;
+  }
+
+  .right {
+    @media (min-width: 992px) {
+      margin-top: 200px;
+    }
+  }
+
+  .row {
+    justify-content: space-between;
+  }
+
+  .gradient-back {
+    margin-left: 40px;
+    margin-top: 50px;
+    width: calc(100% - 40px);
+
+    .text-wrapper {
+      font-family: $heading-font;
+      margin: 0 auto;
+      width: 220px;
+
+      @media (min-width: 768px) {
+        width: 310px;
+      }
+
+      .price {
+        font-size: 70px;
+        font-weight: bold;
+        line-height: 1;
+
+        @media (min-width: 768px) {
+          font-size: 100px;
+        }
+      }
+
+      .text {
+        font-size: 26px;
+      }
+    }
+  }
+}

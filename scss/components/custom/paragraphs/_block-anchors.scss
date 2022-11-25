@@ -1,0 +1,37 @@
+.paragraph--type--block-anchors {
+  background: #000;
+  padding: 3rem;
+
+  .field--name-field-p-block-title {
+    @extend h2;
+    font-family: $heading-font;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  .field--name-field-p-block-links {
+    display: flex;
+    justify-content: center;
+
+    a {
+      color: #FFFFFF;
+      text-decoration: underline;
+      margin-right: 2rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+      align-items: center;
+      .field__item {
+        margin-bottom: 10px;
+
+        a {
+          margin-right: 0;
+        }
+      }
+
+    }
+  }
+}

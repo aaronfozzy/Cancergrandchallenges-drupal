@@ -1,0 +1,82 @@
+.paragraph--type--block-gradient-line-links {
+  margin-bottom: 1.5rem !important;
+
+  @include mq($md) {
+    margin-bottom: 2.5rem !important;
+  }
+
+  @include mq($xl) {
+    margin-bottom: 3.5rem !important;
+  }
+
+  .gradient-bg {
+    height: 130px;
+    overflow: hidden;
+    position: relative;
+
+    @include mq($lg) {
+      height: 260px;
+    }
+  }
+
+  .bg-video {
+    bottom: 0;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .buttons-section {
+    position: absolute;
+    left: 0;
+    text-align: center;
+    width: 100%;
+
+    .apply-button {
+      border-radius: 50%;
+      display: inline-block;
+      height: 100px;
+      line-height: 0.8rem;
+      margin: 15px 15px;
+      position: relative;
+      width: 100px;
+
+      @include mq($lg) {
+        height: 200px;
+        line-height: 1.5rem;
+        margin: 30px 15px;
+        width: 200px;
+      }
+
+      span {
+        font-family: "BW Gradual";
+        font-size: 0.8rem;
+        left: 50%;
+        top: 50%;
+        max-width: 200px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 100%;
+
+        @include mq($lg) {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .bg-col-dark {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    .bg-col-light {
+      background-color: #ffffff;
+      color: #000000;
+    }
+  }
+
+  .apply-button:hover span {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,48 @@
+.site-footer {
+  background: #000;
+
+  ul.navbar-nav {
+    margin-bottom: 1.5rem;
+    @include media-breakpoint-up(sm) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      &.clearfix:after {
+        display: none;
+      }
+    }
+    a {
+      font-family: 'Bw Gradual', serif;
+      font-weight: 500;
+      color: #FFF;
+      @include media-breakpoint-down(sm) {
+        padding: 0.1rem 0;
+      }
+    }
+  }
+  .block-block-content {
+    .content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      p {
+        color: #FFF;
+        font-size: 0.7rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+
+#block-cruk-powered {
+    padding:0 15px;
+    font-size:12px;
+
+}
+
+#onetrust-button-group-parent {
+  @include media-breakpoint-up(lg) {
+    left: 48% !important;
+  }
+}

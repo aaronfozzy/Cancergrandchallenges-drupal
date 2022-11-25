@@ -1,0 +1,28 @@
+.paragraph--type--block-para-video {
+  @include container;
+
+  margin-bottom: 2rem !important;
+
+  @include mq($xl) {
+    margin-bottom: 3.5rem !important;
+  }
+
+  .field--name-field-media-oembed-video {
+    @include mq($md) {
+      height: 405px;
+      padding: 0;
+    }
+
+    @include mq($lg) {
+      height: 540px;
+    }
+
+    @include mq($xl) {
+      height: 640px;
+    }
+  }
+
+  .field--name-field-p-block-media {
+    margin: 0;
+  }
+}

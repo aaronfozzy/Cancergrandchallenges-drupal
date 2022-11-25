@@ -1,0 +1,30 @@
+.view-id-tags {
+  @extend .container;
+  clear: both;
+  margin-top: 5em;
+
+  .views-field-title a {
+    font-size: 2rem;
+    color: black;
+    text-decoration: none;
+  }
+  
+  .views-field-changed {
+    margin-bottom: 20px;
+  }
+
+  .views-field-body {
+    margin-bottom: 20px;
+    border-bottom: #000 2px solid;
+    a {
+      color: black;
+      text-decoration: underline;
+    } //a
+  }// view-field-body
+
+  .views-row:last-child {
+    .views-field-body {
+      border-bottom: none;
+    }
+  }
+}

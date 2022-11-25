@@ -1,0 +1,55 @@
+.paragraph--type--team-link-listing{
+	padding: 120px 0;
+	position: relative;
+	&:after{
+		content:"";
+		background: black;
+		width: calc(50% + 80px);
+		height: 100%;
+		display: block;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: -1;
+	}
+	.container{
+		display:flex;
+	}
+	.left-col{
+		width: 50%;
+		.gradient-back{
+    		max-width: 385px;
+    		&.mb-3.mb-sm-5.px-3{
+				left: -5px;
+			}
+		}
+		p{			
+    		max-width: 385px;
+		}
+	}
+	.right-col{
+		width: 50%;
+		height: 420px;
+	}
+	.view-homepage-team-listing{
+		position: absolute;
+		max-width: 650px;
+		.views-row{
+			margin-right: 30px;
+			margin-bottom: 30px;
+			a{
+				padding: 15px 30px;
+			    border: 3px solid #fff;
+			    cursor: pointer;
+			    display: inline-block;
+			    color: white;
+			    transition: all 0.5s ease;
+			    &:hover{
+			    	background: white;
+			    	color: black;
+			    	text-decoration: none;
+			    }
+			}
+		}
+	}
+}

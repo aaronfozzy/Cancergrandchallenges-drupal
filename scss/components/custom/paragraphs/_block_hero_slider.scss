@@ -1,0 +1,177 @@
+.paragraph--type--block-hero-with-slider {
+  margin-bottom: 0 !important;
+
+  .section-hero > .container-fluid {
+    background: #000000;
+    padding-top: toRem(115);
+    overflow: hidden;
+    @include mq($lg) {
+      padding-top: 0;
+    }
+  }
+
+  .first {
+    position: relative;
+    min-height: 450px;
+
+    @media (min-width: 540px) {
+      min-height: 500px;
+      height: 500px;
+    }
+    @media (min-width: 1200px) {
+      margin: auto;
+    }
+
+    video {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      -webkit-transform: translate3d(0,0,0);
+    }
+
+    .hero-content-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      max-width: 100%;
+      width: 100%;
+      @include media-breakpoint-down(md) {
+        position: absolute;
+        bottom: 0;
+      }
+      @include mq($lg) {
+        flex-direction: row;
+        bottom: 0;
+        justify-content: space-between;
+        padding-left: 70px;
+        position: absolute;
+        width: 100%;
+      }
+
+      .hero-content {
+        /*background: #000000;*/
+        order: 1;
+
+        @include mq($lg) {
+          background: none;
+        }
+
+        @include mq($lg) {
+          order: 0;
+        }
+      }
+    }
+  }
+
+  .field--name-field-p-block-media {
+    background-color: #000000;
+  }
+
+  .field--name-field-p-block-media,
+  .field--name-field-p-slider {
+    margin-bottom: 0;
+
+    .paragraph {
+      margin-bottom: 0;
+    }
+  }
+
+  .field--name-field-p-slider {
+    max-width: 670px;
+
+    @include mq($md) {
+      max-width: 530px;
+    }
+
+    .slick-list {
+      background-color: #ffffff;
+    }
+
+    .field__item {
+      background-color: #ffffff;
+    }
+
+    .paragraph--type--title-text {
+      .container-xl {
+        padding: 0;
+      }
+
+      .header-content {
+        padding: 40px 25px 25px;
+        text-align: center;
+
+        p {
+          margin-bottom: 0;
+        }
+
+        h2,
+        p {
+          text-align: left;
+        }
+
+        h2 {
+          font-size: 1.8rem;
+          line-height: 1;
+          font-weight: 500;
+
+          @include mq($md) {
+            font-size: 2.5rem;
+          }
+        }
+      }
+    }
+
+    .slick-dots {
+      display: flex;
+      padding-left: 0;
+      list-style: none;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+
+      @include mq($lg) {
+        right: 30px;
+        top: 30px;
+      }
+
+      li:nth-child(n + 2) {
+        margin-left: 10px;
+      }
+
+      li {
+        background: gray;
+        border-radius: 10px;
+        height: 12px;
+        width: 12px;
+
+        button {
+          height: 100%;
+          opacity: 0;
+          width: 100%;
+        }
+      }
+
+      .slick-active {
+        background: #000000;
+      }
+    }
+  }
+
+  .founded-by-logos {
+    /*background: #000000;*/
+    padding: 0 1rem 1rem;
+
+    @include mq($lg) {
+      align-self: flex-end;
+      padding: 0 1rem 1rem;
+    }
+
+    img {
+      max-width: 232px;
+
+      @include mq($lg) {
+        max-width: none;
+      }
+    }
+  }
+}

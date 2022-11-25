@@ -1,0 +1,253 @@
+.paragraph--type--video-slider {
+  margin-bottom: 0.5rem !important;
+  padding-top: 2rem;
+
+  @include mq($md) {
+    margin-bottom: 1rem !important;
+  }
+
+  @include mq($lg) {
+    padding-top: 0;
+  }
+
+  @include mq($xl) {
+    margin-bottom: 1.5rem !important;
+  }
+
+  // control button
+  .slick-arrow {
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translatey(-50%);
+    width: 15%;
+    z-index: 1;
+
+    &::before {
+      background-repeat: no-repeat;
+      background-size: 28px 56px;
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .slick-prev {
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1) 40%,
+      rgba(255, 255, 255, 0.7) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+    &::before {
+      background-image: url("/themes/custom/cruk/images/icons/prev-arrow.svg");
+      background-position: 25px center;
+    }
+  }
+
+  .slick-next {
+    background-image: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 1) 40%,
+      rgba(255, 255, 255, 0.7) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    right: 0;
+
+    &::before {
+      background-image: url("/themes/custom/cruk/images/icons/next-arrow.svg");
+      background-position: right 35px center;
+    }
+  } /* end of control button */
+
+  // video slide
+  .paragraph--type--video-slide {
+    max-width: 100%;
+
+    @include mq($md) {
+      margin: 0 15px;
+    }
+
+    .thumbnail {
+      position: relative;
+      margin-bottom: 0.5rem;
+
+      @include mq($md) {
+        margin-bottom: 1.5rem;
+      }
+
+      @include mq($xl) {
+        margin-bottom: 2rem;
+      }
+
+      &::before {
+        background: url("/themes/custom/cruk/images/play-button.png") no-repeat
+          center/cover;
+        bottom: 15px;
+        content: "";
+        cursor: pointer;
+        display: inline-block;
+        height: 44px;
+        left: 15px;
+        position: absolute;
+        width: 44px;
+
+        @include mq($md) {
+          bottom: 30px;
+          height: 64px;
+          left: 30px;
+          width: 64px;
+        }
+
+        @include mq($lg) {
+          bottom: 30px;
+          height: 84px;
+          left: 30px;
+          width: 84px;
+        }
+      }
+    }
+
+    img {
+      cursor: pointer;
+      max-width: 100%;
+    }
+
+    .content-wrapper {
+      padding: 0 15px;
+
+      @include mq(713px) {
+        padding: 0;
+      }
+    }
+
+    .slide-title {
+      font-family: $heading-font;
+      font-weight: 500;
+      margin-bottom: 0;
+
+      @include mq($md) {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .slide-subtitle {
+      max-width: 713px;
+    }
+  }
+
+  // slick dots
+  .slick-dots {
+    left: 50%;
+    margin-bottom: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, -80%);
+
+    li {
+      background-color: gray;
+      border-radius: 50%;
+      display: inline-block;
+      height: 12px;
+      width: 12px;
+    }
+
+    li:nth-child(n + 2) {
+      margin-left: 10px;
+    }
+
+    button {
+      height: 100%;
+      opacity: 0;
+      width: 100%;
+    }
+
+    .slick-active {
+      background-color: #000000;
+    }
+  }
+}
+
+// Popup
+.show-popup {
+  overflow: hidden;
+}
+
+.video-popup {
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  .popup {
+    height: 255px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 375px;
+
+    @include mq($lg) {
+      height: 355px;
+      width: 650px;
+    }
+
+    @include mq($xl) {
+      height: 460px;
+      width: 800px;
+    }
+  }
+
+  .close-popup {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2.5rem;
+    line-height: 0;
+    padding: 28px 15px;
+    position: absolute;
+    right: 0;
+    top: -56px;
+
+    @include mq(450px) {
+      right: -56px;
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+
+    @include mq($xl) {
+      height: 90px;
+      font-size: 70px;
+      line-height: 70px;
+      right: -90px;
+      top: -90px;
+      width: 90px;
+    }
+  } /* close popup button */
+
+  .popup-content {
+    height: 100%;
+
+    iframe {
+      height: 100%;
+      width: 100%;
+    }
+  }
+} /* end of popup */

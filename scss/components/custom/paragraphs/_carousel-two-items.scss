@@ -1,0 +1,112 @@
+.carousel-two-items, .carousel-block {
+  .title {
+    text-align: center;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 1em;
+  }
+
+  .carousel {
+    .carousel-item {
+      .top {
+        img {
+          height: auto;
+          width: 100%;
+        }
+      }//top
+
+      .bottom {
+        margin-top: 15px;
+      }//bottom
+
+      .left {
+        .top {
+          position: relative;
+        }
+
+        .video-play-button {
+          position: absolute;
+          display: block;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #000 url('../images/icons/play-button.svg') no-repeat center left 12px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }//left top
+
+      .right {
+        .top  {
+          background: linear-gradient(to right top, #ffe600, #ffa51e, #ff3232, #aa6ed7);
+          padding: 1em;
+          @media (min-width: 992px) {
+            height: 540px;
+          }
+        }
+
+        .teaser {
+          height: 100%;
+          padding: 2em;
+          background-color: white;
+
+          .news-team {
+            text-decoration: underline;
+          }
+
+          h3 {
+            @media (min-width: 992px) {
+              font-size: 56px;
+            }
+          }
+        }
+      }//right top
+    }//carousel-item
+
+    .carousel-control-prev,
+    .carousel-control-next,
+    .slick-prev,
+    .slick-next {
+      width: 30px;
+      height: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      opacity: 1;
+
+      span {
+        display: none;
+      }
+    }
+
+    .carousel-control-prev {
+      background: #000 url('../images/icons/prev.svg') no-repeat center;
+      @media (min-width: 850px) {
+        left: -70px;
+      }
+    }
+
+    .carousel-control-next {
+      background: #000 url('../images/icons/next.svg') no-repeat center;
+      @media (min-width: 850px) {
+        right: -70px;
+      }
+    }
+  }//carousel
+}//carousel-two-items
+
+.more-button {
+  margin-top: 5em;
+
+  a {
+    color: #343a40;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

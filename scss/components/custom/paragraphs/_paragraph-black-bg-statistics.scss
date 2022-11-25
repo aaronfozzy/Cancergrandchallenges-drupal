@@ -1,0 +1,48 @@
+.paragraph-black-bg-statistics {
+  background: #000;
+  padding: 70px 0;
+
+  .text-wrapper, .field--name-field-p-block-summary-items {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @media (min-width: 1400px) {
+      flex-wrap: nowrap;
+    }
+
+    .item, .field__item {
+      color: #fff;
+      margin-bottom: 30px;
+      padding: 0 15px;
+      width: 100%;
+
+      @media (min-width: 768px) {
+        width: 50%;
+      }
+
+      @media (min-width: 1200px) {
+        margin-bottom: 0;
+        padding: 0 25px;
+        width: auto;
+      }
+
+      h3 {
+        border-bottom: 2px solid #fff;
+        font-size: 1.25rem;
+      }
+
+      .statistic {
+        font-family: $heading-font;
+        font-size: 70px;
+        line-height: 1.2;
+        text-align: right;
+        padding: 0;
+      }
+      .countries-involved.item, .team-funded.item, .investigators-collaborators.item {
+        position: initial;
+      }
+    }
+  }
+}

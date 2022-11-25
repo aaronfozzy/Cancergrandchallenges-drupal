@@ -1,0 +1,471 @@
+.block-views-blockteam-map-block-1 {
+
+  > h2 {
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.view-team-map {
+
+  .view-filters {
+
+    .views-exposed-form {
+
+      .form-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+
+        // Temporary removed past teams filter
+        #edit-team-status--wrapper {
+          display: none;
+        }
+
+        legend {
+          display: none;
+        }
+
+        fieldset:first-of-type {
+
+          .fieldset-wrapper {
+
+            .form-radios {
+              display: flex;
+
+              div.custom-control {
+                padding: 0;
+                margin: 0;
+
+                input {
+                  display: none;
+                }
+              }
+
+              .custom-control-input:checked ~ .custom-control-label::after {
+                background: linear-gradient(to right, #ffe600, #ffa51e, #ff3232, #aa6ed7);
+                bottom: 2px;
+                content: " ";
+                display: block;
+                height: 2px;
+                position: relative;
+                width: 100%;
+                left: -50%;
+                transform: translateX(50%);
+              }
+
+              > div:first-of-type {
+                  border-right: 1px solid #000;
+                  line-height: 1;
+                  margin-right: 10px;
+                  padding-right: 10px;
+              }
+
+              label {
+                color: #000;
+                cursor: pointer;
+                font-family: $heading-font;
+                line-height: 1em;
+                text-decoration: none;
+
+                &:after {
+                  background: #000;
+                  bottom: 2px;
+                  content: '';
+                  display: block;
+                  height: 2px;
+                  position: relative;
+                  width: 100%;
+                  left: -50%;
+                  transform: translateX(50%);
+                }
+
+                &:hover,
+                &.is-active a {
+                  text-decoration: none;
+
+                  &::after {
+                    background: linear-gradient(to right, #ffe600, #ffa51e, #ff3232, #aa6ed7);
+                    bottom: 2px;
+                    content: " ";
+                    display: block;
+                    height: 2px;
+                    position: relative;
+                    width: 100%;
+                    left: -50%;
+                    transform: translateX(50%);
+                  }
+                }
+
+                &:before {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+
+        fieldset:last-of-type {
+
+          .fieldset-wrapper {
+
+            .radio {
+              display: flex;
+              justify-content: center;
+              flex-wrap: wrap;
+
+              div.custom-control {
+                margin: 10px;
+                padding: 0;
+
+                label {
+                  padding: 15px 30px;
+                  border: 3px solid #000000;
+                  cursor: pointer;
+
+                  &:before {
+                    display: none;
+                  }
+                  &:after {
+                    display: none;
+                  }
+                }
+
+                input {
+                  display: none;
+                }
+              }
+
+              .custom-control-input:checked ~ .custom-control-label::before {
+                content: ' ';
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background: #000000;
+                border: none;
+                border-radius: 0;
+                z-index: -1;
+              }
+              .custom-control-input:checked ~ .custom-control-label {
+                color: #FFFFFF;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.view-display-id-block_1 {
+
+    >.view-content {
+
+      .views-row {
+        display: flex;
+        margin: 20px 0;
+        width: 100%;
+
+        @include media-breakpoint-down(md) {
+          flex-wrap: wrap;
+        }
+
+        .views-field {
+          display: flex;
+          padding: 0 15px;
+          flex-direction: column;
+          min-width: 40%;
+          border-right: 2px solid #000000;
+
+          @include media-breakpoint-up(md) {
+            min-width: 25%;
+          }
+
+          &:last-of-type {
+            border-right: none;
+            min-width: 40%;
+
+            @include media-breakpoint-down(md) {
+              margin-top: 1rem;
+            }
+          }
+
+          .views-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+
+
+  .attachment {
+
+    .view-display-id-attachment_1 {
+
+      .views-row {
+        display: flex;
+        margin: 20px 0;
+        width: 100%;
+      }
+
+      > .view-content {
+        position: relative;
+        width: 100%;
+        height: 350px;
+
+        @include media-breakpoint-up(md) {
+          height: 700px;
+        }
+
+        .leaflet-container {
+
+          .leaflet-marker-pane {
+
+            .leaflet-map-divicon {
+              width: 20px;
+              height: 20px;
+              background: url("../images/icons/map_icon.png");
+              background-size: contain;
+            }
+          }
+        }
+        &.zoomed {
+
+          .leaflet-container {
+
+            @include media-breakpoint-down(md) {
+              min-width: 0 !important;
+            }
+          }
+
+          .leaflet-map-divicon {
+            width: 50px !important;
+            height: 50px !important;
+          }
+        }
+      }
+
+      .leaflet-popup-pane {
+        display: none;
+      }
+
+      .leaflet-control-container {
+        display: none;
+      }
+    }
+
+    .view-team-map.view-display-id-attachment_1 .view-content {
+        display: flex;
+
+      .leaflet-container {
+        flex-grow: 1;
+      }
+
+      >.views-element-container {
+        position: relative;
+        border-radius: unset;
+        background: $gradient-yellow-purple;
+        padding: 10px;
+        z-index: 4;
+
+        @include media-breakpoint-up(md) {
+          padding: 30px
+        }
+
+        div.close-map-popup {
+          display: flex;
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          justify-content: center;
+          align-items: center;
+          padding: 0 0 2px 0;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: #FFFFFF;
+          cursor: pointer;
+
+          @include media-breakpoint-up(md) {
+            top: 35px;
+            right: 35px;
+          }
+        }
+
+        .view-display-id-block_2 {
+          position: relative;
+          width: 100% !important;
+          height: 100%;
+          margin: 0;
+          background: #FFFFFF;
+
+          @include media-breakpoint-up(md) {
+            width: 500px !important;
+            height: 640px;
+          }
+
+          .view-content {
+
+            /* width */
+            ::-webkit-scrollbar {
+              width: 6px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+              background: #555;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+              background: #222;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+              background: #333;
+            }
+
+            .team_map_row_wrapper {
+              display: flex;
+              flex-wrap: wrap;
+              max-height: 230px;
+              overflow-y: auto;
+              width: 100%;
+
+              @include media-breakpoint-up(md) {
+                max-height: 490px;
+              }
+
+              .views-row {
+                flex-direction: column;
+                align-items: center;
+                flex-basis: 45%;
+                padding: 5px;
+
+                @include media-breakpoint-up(md) {
+                  flex-basis: 32%;
+                  padding: 2px 20px;
+                }
+
+                .views-field {
+                  border: none;
+                }
+
+                .views-field-field-team-member-photo {
+                  margin-bottom: 10px;
+
+                  img {
+                    border-radius: 50%;
+                  }
+                }
+
+                .views-field-title-1 {
+                  line-height: 1.2;
+                  font-size: 0.8rem;
+
+                  @include media-breakpoint-down(sm) {
+                    font-size: 0.6rem;
+                    line-height: 1;
+                  }
+                }
+              }
+            }
+
+            .team_map_wrapper {
+              min-height: 100px;
+              width: 100%;
+              background: #000000;
+              color: #FFFFFF;
+              padding: 10px 15px;
+
+              @include media-breakpoint-up(md) {
+                min-height: 150px;
+                padding: 20px;
+              }
+
+              .team_name {
+                font-size: 1rem;
+                font-weight: 400;
+              }
+
+              .country_name {
+                font-size: 1.4rem;
+                font-weight: 700;
+
+                @include media-breakpoint-up(md) {
+                  font-size: 1.4rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .view-display-id-attachment_2 {
+
+      .views-row {
+        width: 100%;
+      }
+    }
+
+    .team_map_description_wrapper {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      @include media-breakpoint-up(md) {
+        margin-top: 3rem;
+      }
+
+      .team_map_description_content {
+        width: 100%;
+        margin-bottom: 1rem;
+
+        @include media-breakpoint-up(md) {
+          width: 60%;
+          margin-bottom: 0;
+        }
+
+        .team_map_description_content_year {
+          margin-top: 1rem;
+          font-weight: 700;
+        }
+      }
+
+      .team_map_description_link {
+        display: flex;
+
+        @include media-breakpoint-up(md) {
+          padding-right: 10%;
+        }
+
+        a {
+          display: flex;
+          flex-shrink: 0;
+          height: 160px;
+          width: 160px;
+          align-items: center;
+          justify-content: center;
+          background: #000;
+          border-radius: 50%;
+          color: #fff;
+          padding: 0 25px;
+          text-align: center;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

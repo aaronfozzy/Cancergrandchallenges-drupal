@@ -1,0 +1,33 @@
+.paragraph-founded-by {
+  .founded-by-wrapper {
+    margin: 0 auto;
+    max-width: 600px;
+
+    .h3,
+    h3 {
+      font-size: 1rem;
+      margin-top: 0;
+      font-weight: bold;
+      font-family: 'Bw Gradual', serif;
+    }
+
+    .item-wrapper, .field--name-field-p-block-logos {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .item, .field__item {
+        flex: none;
+        padding: 15px;
+
+        img {
+          display: block;
+          height: auto;
+          max-width: 210px;
+
+        }
+      }
+    }
+  }
+}

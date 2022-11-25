@@ -1,0 +1,52 @@
+.team-leaders{
+  background: white;
+  padding: 55px 0;
+  .view-content{
+    display: flex;
+    align-items: center;
+    .team-leader{
+      width: calc(33.333% - 20px);
+      display: flex;
+      justify-content: center;
+      margin-left: 10px;
+      margin-right: 10px;
+      @media (max-width: 768px){
+        position: relative;
+        right: 175px;
+      }
+      .team-leader-photo{
+        width: 126px;
+        height: 126px;
+        position: relative;
+        display: block;
+        border-radius: 100%;
+        overflow: hidden;
+        img{
+          position: absolute;
+          height: auto;
+          width: auto;
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: cover;
+        }
+      }
+      .leader-content{
+        width: calc(100% - 136px);
+        margin-left: 10px;
+        p{
+          font-size: 0.8rem;
+          margin-bottom: 0;
+          &:first-child(){
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+.view-content.row {
+  @media (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+  }
+}

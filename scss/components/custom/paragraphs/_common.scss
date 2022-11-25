@@ -1,0 +1,166 @@
+//nav.tabs {
+//  position: absolute;
+//  z-index: 999;
+//}
+
+.main-content {
+  padding: 0;
+}
+
+.node__content {
+  margin-top: 0;
+}
+
+.content-black {
+  background-color: black;
+  margin-bottom: 5em;
+}
+
+.gradient-border-block {
+  margin: 20px;
+  .container {
+    position: relative;
+    background-color: #fff;
+    margin: 20px auto;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    text-align: center;
+    margin-bottom: 8em;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      margin: -20px;
+      background: $gradient-yellow-purple;
+    }
+  }
+}
+
+.gradient-back {
+  position: relative;
+  background-color: black;
+  margin: 0 5px 40px 5px;
+  @include media-breakpoint-up(lg) {
+    margin: -40px -40px 40px 5px;
+  }
+  padding-top: 2em;
+  padding-bottom: 2em;
+  text-align: center;
+  margin-bottom: 8em;
+  color: white;
+  text-align: left;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: 40px 40px -40px -40px;
+    background: $gradient-yellow-purple;
+  }
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.paragraph:not(.paragraph--type--block-hero) {
+  margin-bottom: 5em;
+}
+
+.paragraph--type--block-side-title-text
+  .field--name-field-p-block-text
+  p:last-of-type {
+  margin-bottom: 0;
+}
+
+.paragraph--type--block-side-title-text .gradient-back {
+  padding: 1.5em;
+  margin-bottom: 5em;
+
+  @media (min-width: 768px) {
+    margin-bottom: 8em;
+  }
+}
+
+.page-node-4 .paragraph--type--block-gradient-square {
+  margin-bottom: 3em;
+
+  @media (min-width: 768px) {
+    margin-bottom: 5em;
+  }
+}
+
+.paragraph--type--block-hero.hero-style-none,
+.paragraph--type--block-hero.hero-style-standard {
+  margin-bottom: -4em;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
+}
+
+.paragraph.m0 {
+  margin: 0;
+}
+
+.paragraph.m20-0 {
+  margin: 20px 0;
+}
+
+.paragraph.mb20 {
+  margin-bottom: 1rem;
+}
+
+.paragraph.mt20 {
+  margin-top: 1rem;
+}
+
+.paragraph.mb25-50-70 {
+  margin: 0 0 25px;
+
+  @include mq($md) {
+    margin: 0 0 50px;
+  }
+
+  @include mq($xl) {
+    margin: 0 0 70px;
+  }
+}
+
+.paragraph.mt25-50-70 {
+  margin: 25px 0 0;
+
+  @include mq($md) {
+    margin: 50px 0 0;
+  }
+
+  @include mq($xl) {
+    margin: 70px 0 0;
+  }
+}
+
+.paragraph.m25-50-70 {
+  margin: 25px 0 !important;
+
+  @include mq($md) {
+    margin: 50px 0 !important;
+  }
+
+  @include mq($xl) {
+    margin: 70px 0 !important;
+  }
+}
+
+.bottom-indent {
+
+  @include mq($lg) {
+    height: 10px;
+  }
+}
