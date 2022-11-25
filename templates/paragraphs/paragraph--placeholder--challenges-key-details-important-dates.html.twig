@@ -1,0 +1,54 @@
+<section class="challenges-key-details-important-dates">
+    <div class="container">
+      <h2>Key details & important dates</h2>
+      <div class="blocks">
+        <div class="block" id="dates-block-1">
+          <div class="block-header" onclick="importantDatesClick(1);">Select your challenge and start building your team (from 14 October 2020)</div>
+          <div class="text">Decide which of our 9 challenges you’re ready to take on. Reach out to your international network and start building your team of collaborators from a variety of disciplines.</div>
+          <div class="arrow" onclick="importantDatesClick(1);">
+            <i></i>
+          </div>
+        </div>
+
+        <div class="block" id="dates-block-2">
+          <div class="block-header" onclick="importantDatesClick(2);">Submit your expression of interest (EOI) (22 April 2021)</div>
+          <div class="text">Once you’ve completed our questionnaire, we’ll contact you to open your EOI application.</div>
+          <div class="arrow" onclick="importantDatesClick(2);">
+            <i></i>
+          </div>
+        </div>
+
+        <div class="block" id="dates-block-3">
+          <div class="block-header" onclick="importantDatesClick(3);">Shortlist announced (June 2021)</div>
+          <div class="text">Our Scientific Committee review all applications. If your team makes the cut, you’ll receive seed funding of £30,000 (c.$40,000) to develop your proposal.</div>
+          <div class="arrow" onclick="importantDatesClick(3);">
+            <i></i>
+          </div>
+        </div>
+
+        <div class="block" id="dates-block-4">
+          <div class="block-header" onclick="importantDatesClick(4);">Submit your full application (October 2021)</div>
+          <div class="text">If you are shortlisted, the Scientific Committee will provide feedback on your EOI. The Advocacy Panel will provide feedback on your advocate involvement and engagement strategy. You’ll also receive dedicated support from the Cancer Grand Challenges team to help build your full application.<br>
+            After submitting your full application, you'll be interviewed by the Scientific Committee, including the Chair of the Advocacy Panel.</div>
+          <div class="arrow" onclick="importantDatesClick(4);">
+            <i></i>
+          </div>
+        </div>
+
+        <div class="block" id="dates-block-5">
+          <div class="block-header" onclick="importantDatesClick(5);">Awards announced (early 2022)</div>
+          <div class="text">Successful teams will each receive £20m (c.$25m) over 5 years to fund research costs, salaries and equipment or licensing costs.</div>
+          <div class="arrow" onclick="importantDatesClick(5);">
+            <i></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <script>
+    function importantDatesClick(id) {
+      let element = document.getElementById('dates-block-' + id);
+      element.classList.toggle("active");
+    }
+  </script>
+</section>

@@ -1,0 +1,281 @@
+{{ attach_library('bootstrap_barrio/node') }}
+{%
+set classes = [
+'node',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+'clearfix',
+]
+%}
+{# Replace |file_url with |image_style('style') filter to the value if you need to apply a specific image style. #}
+{% set team_quote_photo_url = content.field_team_quote[0]['#node'].field_team_member_photo.entity.uri.value ?: '' %}
+{% set team_quote_photo_alt = content.field_team_quote[0]['#node'].field_team_member_photo.alt ?: '' %}
+{% set team_quote_name = content.field_team_quote[0]['#node'].title.value ?: '' %}
+{% set team_quote_title = content.field_team_quote[0]['#node'].field_team_member_title.value ?: '' %}
+{% set team_quote_text = content.field_team_quote[0]['#node'].field_team_member_quote.value ?: '' %}
+<article {{ attributes.addClass(classes) }}>
+  <header>
+    {{ title_prefix }}
+    {{ title_suffix }}
+  </header>
+  <div {{ content_attributes.addClass('node__content', 'clearfix') }}>
+    <!-- section hero -->
+    <div class="section section-hero bg-black paragraph--type--block-hero">
+      <div class="container-fluid">
+        <div class="row first block-hero-logos">
+          <div class="field field--name-field-p-block-media field--type-entity-reference field--label-hidden field__item">
+            <div>
+              <div class="field field--name-field-media-video-file field--type-file field--label-visually_hidden">
+                <div class="field__label visually-hidden">Video file</div>
+                <div class="field__item"><video playsinline="" loop="" muted="" autoplay="" width="1920" height="1080">
+                    <source src="/sites/default/files/2020-10/twister2_1.mp4" type="video/mp4">
+                    <track src="" kind="captions" srclang="en" label="English">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-content-wrapper">
+            <div class="hero-content">
+              <div class="subtitle">
+                <div class="field field--name-field-p-block-subtitle field--type-string field--label-hidden field__item">Team</div>
+              </div>
+              <div class="founded-by-logos-mobile"></div>
+              <h1 class="title">
+                <div class="field field--name-field-p-block-title field--type-string field--label-hidden field__item">{{ label }}</div>
+              </h1>
+              <div class="description">
+                <div class="clearfix text-formatted field field--name-field-p-block-text field--type-text-long field--label-hidden field__item">
+                  {{ content.field_team_challenge }}
+                </div>
+              </div>
+            </div>
+            <div class="founded-by-logos">
+              <img src="/themes/custom/cruk/images/logos/foundedbylogos.png" alt="Founders' logos">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="team-leaders">
+        <div class="container">
+          <div class="rows">
+            {{ drupal_view('team_team_leaders', 'block_1') }}
+          </div>
+        </div>
+      </div>
+      <div class="paragraph-black-bg-statistics">
+        <div class="container">
+          <div class="text-wrapper">
+            <div class="investment-to-date item">
+              <h3>{{ node.field_team_researchers.fieldDefinition.label|upper }}</h3>
+              <p>
+                {{ content.field_team_researchers.0 }}
+              </p>
+            </div>
+            <div class="countries-involved item">
+              <h3>{{ node.field_team_location.fieldDefinition.label|upper }}</h3>
+              <p>
+                {{ content.field_team_location.0 }}
+              </p>
+            </div>
+            <div class="team-funded item">
+              <h3>{{ node.field_team_funded_by.fieldDefinition.label|upper }}</h3>
+              <p>
+                {{ content.field_team_funded_by.0 }}
+              </p>
+            </div>
+            <div class="investigators-collaborators item">
+              <h3>{{ node.field_team_specialisms.fieldDefinition.label|upper }}</h3>
+              <p>
+                {{ content.field_team_specialisms.0 }}
+              </p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+{#
+      <div class="container">
+        <div class="row py-2 py-sm-5">
+          <div class="col-md-6">
+            <!-- team details -->
+            <div class="team-details">
+              <div class="row">
+                <div class="col">
+                  <div class="tile tile-challenge">
+                    {{ content.field_team_investigator }}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-lg-6">
+                  <div class="tile tile-researchers">
+                    {{ content.field_team_researchers }}
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="tile tile-investigator">
+                    {{ content.field_team_investigator }}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-lg-6">
+                  <div class="tile tile-location">
+                    {{ content.field_team_location }}
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="tile tile-funded">
+                    {{ content.field_team_funded_by }}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="tile tile-specialisms">
+                    {{ content.field_team_specialisms }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+#}
+
+  </div>
+  <!-- section content -->
+  <div class="section section-content">
+    <div class="container">
+       {% if content.field_team_description %}
+      <div class="row text-center">
+        <div class="col section-title text-center mx-auto my-sm-5">
+          {{ content.field_team_description }}
+        </div>
+      </div>
+       {% endif %}
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="gradient-back mb-3 mb-sm-5 px-3">
+            <h2 class="title">{{ content.field_co }}</h2>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="team-description--content">
+            {{ content.field_right_column_text }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="gradient-back mb-3 mb-sm-5 px-3">
+            <h2 class="title">{{ content.field_colour_quote_1 }}</h2>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="team-description--content">
+            {{ content.field_right_column_text_1 }}
+          </div>
+        </div>
+      </div>
+      <div class="row py-2 py-sm-5">
+        <div class="col-sm-6">
+          <div class="team-member">
+            <div class="team-member--photo">
+              {{ drupal_image(team_quote_photo_url, 'scale_crop_250w_250h', {alt: team_quote_photo_alt}) }}
+            </div>
+            <h4 class="team-member--name">{{ team_quote_name }}</h4>
+            <p class="team-member--title">{{ team_quote_title }}</p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="team-member-quote">
+            <span class="quote-sign"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.03 30">
+                <defs>
+                  <style>
+                  .cls-1 {
+                    font-size: 27.03px;
+                    fill: #000;
+                    font-family: BwGradual-Bold, Bw Gradual;
+                    font-weight: 700;
+                  }
+
+                  </style>
+                </defs>
+                <g data-name="Warstwa 2">
+                  <g data-name="Layer 1"><text class="cls-1" transform="translate(12.03 6.49) rotate(180)">”</text></g>
+                </g>
+              </svg></span>
+            <blockquote>{{ team_quote_text|striptags }}</blockquote>
+          </div>
+        </div>
+      </div>
+      <div class="row py-2 py-sm-5">
+        <div class="col-sm-6">
+          <div class="gradient-back mb-3 mb-sm-5 px-3">
+            <h2 class="title tests">{{content.field_timeline_progress_quote }}</h2>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          {% if not (node.field_team_timeline.isEmpty == true) and content.field_team_timeline is defined %}
+          <div class="team-timeline">
+            <div class="gradient-back mb-3 mb-sm-5 p-3" data-toggle="modal" data-target="#timelineModal">
+              <div class="team-timeline-title">Zooming in on progress</div>
+              <div class="team-timeline-subtitle">Click to discover the {{ label }} team’s research achievements:</div>
+              <div class="team-timeline-bg">
+                <div class="team-timeline-item-toggle"></div>
+              </div>
+            </div>
+            <div class="team-timeline-popup-wrapper modal fade" id="timelineModal" tabindex="-1" role="dialog" aria-labelledby="timelineModal" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <a class="close" data-dismiss="modal" aria-label="Close"></a>
+                  </div>
+                  <div class="modal-body">
+                    <div class="team-timeline-popup-title">Research achievements</div>
+                    <div class="team-timeline-popup-subtitle">Click on a date to expand</div>
+                    {{ drupal_view('timeline', 'block_1') }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          <div class="team-photo">
+            {{ content.field_team_photo }}
+          </div>
+        </div>
+      </div>
+      {% if content.field_team_description_bottom %}
+      <div class="row text-center">
+        <div class="col section-title text-center mx-auto my-sm-5">
+          {{ content.field_team_description_bottom }}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if not (node.field_team_gradient_block.isEmpty == true) and content.field_team_gradient_block is defined %}
+  <div class="gradient-border-block changed">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          {{ content.field_team_gradient_block }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <div class="team-committee">
+    {{ drupal_view('committee', 'block_2') }}
+  </div>
+  <div class="node-insight-impact">
+    {{ drupal_view('insight_impact', 'block_1', node.id) }}
+  </div>
+</article>

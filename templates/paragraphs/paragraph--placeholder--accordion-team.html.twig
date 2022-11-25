@@ -1,0 +1,294 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - paragraph.getCreatedTime() will return the paragraph creation timestamp.
+ *   - paragraph.id(): The paragraph ID.
+ *   - paragraph.bundle(): The type of the paragraph, for example, "image" or "text".
+ *   - paragraph.getOwnerId(): The user ID of the paragraph author.
+ *   See Drupal\paragraphs\Entity\Paragraph for a full list of public properties
+ *   and methods for the paragraph object.
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished',
+  block_class
+]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      <div class="paragraph-accordion-team">
+        <div class="container">
+          <div class="row">
+            <div class="tabs">
+              <a href="#" class="active">LIVE TEAMS</a>
+              <a href="#">PAST TEAMS</a>
+            </div>
+            <div class="accordion-wrapper">
+              <div class="accordion-item">
+                <div class="accordion-title">SPECIFICANCER</div>
+                <div class="accordion-content">
+                  <div class="group-wrapper">
+                    <div class="group-left">
+                      <div class="group-top">
+                        <div class="team-name">
+                          <span>Focus:</span>
+                          <h6>Tissue Specificity</h6>
+                        </div>
+                        <div class="title">
+                          <h5>
+                            What causes cancer to grow in<br />
+                            some organs and not others?
+                          </h5>
+                        </div>
+                      </div>
+                      <div class="group-bottom">
+                        <p>
+                          When mutated, most cancer-causing genes<br />
+                          will only drive the disease in specific organs<br />
+                          and tissues. Professor Stephen Elledge and his<br />
+                          world-class team of geneticists, bioinformaticians<br />
+                          and clinicians are building a comprehensive<br />
+                          map of cancer drivers – molecules known<br />
+                          to cause cancer – to understand the role they<br />
+                          play in different parts of the body.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="group-right">
+                      <div class="button-wrapper">
+                        <a href="/">Team page</a>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-title">OPTIMISTICC</div>
+                <div class="accordion-content">
+                  <div class="group-wrapper">
+                    <div class="group-left">
+                      <div class="group-top">
+                        <div class="team-name">
+                          <span>Focus:</span>
+                          <h6>Tissue Specificity</h6>
+                        </div>
+                        <div class="title">
+                          <h5>
+                            What causes cancer to grow in<br />
+                            some organs and not others?
+                          </h5>
+                        </div>
+                      </div>
+                      <div class="group-bottom">
+                        <p>
+                          When mutated, most cancer-causing genes<br />
+                          will only drive the disease in specific organs<br />
+                          and tissues. Professor Stephen Elledge and his<br />
+                          world-class team of geneticists, bioinformaticians<br />
+                          and clinicians are building a comprehensive<br />
+                          map of cancer drivers – molecules known<br />
+                          to cause cancer – to understand the role they<br />
+                          play in different parts of the body.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="group-right">
+                      <div class="button-wrapper">
+                        <a href="/">Team page</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-title">STORMing Cancer</div>
+                <div class="accordion-content">
+                  <div class="group-wrapper">
+                    <div class="group-left">
+                      <div class="group-top">
+                        <div class="team-name">
+                          <span>Focus:</span>
+                          <h6>Tissue Specificity</h6>
+                        </div>
+                        <div class="title">
+                          <h5>
+                            What causes cancer to grow in<br />
+                            some organs and not others?
+                          </h5>
+                        </div>
+                      </div>
+                      <div class="group-bottom">
+                        <p>
+                          When mutated, most cancer-causing genes<br />
+                          will only drive the disease in specific organs<br />
+                          and tissues. Professor Stephen Elledge and his<br />
+                          world-class team of geneticists, bioinformaticians<br />
+                          and clinicians are building a comprehensive<br />
+                          map of cancer drivers – molecules known<br />
+                          to cause cancer – to understand the role they<br />
+                          play in different parts of the body.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="group-right">
+                      <div class="button-wrapper">
+                        <a href="/">Team page</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-title">MUTOGRAPHS</div>
+                <div class="accordion-content">
+                  <div class="group-wrapper">
+                    <div class="group-left">
+                      <div class="group-top">
+                        <div class="team-name">
+                          <span>Focus:</span>
+                          <h6>Tissue Specificity</h6>
+                        </div>
+                        <div class="title">
+                          <h5>
+                            What causes cancer to grow in<br />
+                            some organs and not others?
+                          </h5>
+                        </div>
+                      </div>
+                      <div class="group-bottom">
+                        <p>
+                          When mutated, most cancer-causing genes<br />
+                          will only drive the disease in specific organs<br />
+                          and tissues. Professor Stephen Elledge and his<br />
+                          world-class team of geneticists, bioinformaticians<br />
+                          and clinicians are building a comprehensive<br />
+                          map of cancer drivers – molecules known<br />
+                          to cause cancer – to understand the role they<br />
+                          play in different parts of the body.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="group-right">
+                      <div class="button-wrapper">
+                        <a href="/">Team page</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-title">IMAXT</div>
+                <div class="accordion-content">
+                  <div class="group-wrapper">
+                    <div class="group-left">
+                      <div class="group-top">
+                        <div class="team-name">
+                          <span>Focus:</span>
+                          <h6>Tissue Specificity</h6>
+                        </div>
+                        <div class="title">
+                          <h5>
+                            What causes cancer to grow in<br />
+                            some organs and not others?
+                          </h5>
+                        </div>
+                      </div>
+                      <div class="group-bottom">
+                        <p>
+                          When mutated, most cancer-causing genes<br />
+                          will only drive the disease in specific organs<br />
+                          and tissues. Professor Stephen Elledge and his<br />
+                          world-class team of geneticists, bioinformaticians<br />
+                          and clinicians are building a comprehensive<br />
+                          map of cancer drivers – molecules known<br />
+                          to cause cancer – to understand the role they<br />
+                          play in different parts of the body.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="group-right">
+                      <div class="button-wrapper">
+                        <a href="/">Team page</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-title">PRECISION</div>
+                <div class="accordion-content">
+                  <div class="group-wrapper">
+                    <div class="group-left">
+                      <div class="group-top">
+                        <div class="team-name">
+                          <span>Focus:</span>
+                          <h6>Tissue Specificity</h6>
+                        </div>
+                        <div class="title">
+                          <h5>
+                            What causes cancer to grow in<br />
+                            some organs and not others?
+                          </h5>
+                        </div>
+                      </div>
+                      <div class="group-bottom">
+                        <p>
+                          When mutated, most cancer-causing genes<br />
+                          will only drive the disease in specific organs<br />
+                          and tissues. Professor Stephen Elledge and his<br />
+                          world-class team of geneticists, bioinformaticians<br />
+                          and clinicians are building a comprehensive<br />
+                          map of cancer drivers – molecules known<br />
+                          to cause cancer – to understand the role they<br />
+                          play in different parts of the body.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="group-right">
+                      <div class="button-wrapper">
+                        <a href="/">Team page</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

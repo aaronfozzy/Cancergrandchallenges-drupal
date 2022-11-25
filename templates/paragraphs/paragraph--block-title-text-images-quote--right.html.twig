@@ -1,0 +1,109 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - paragraph.getCreatedTime() will return the paragraph creation timestamp.
+ *   - paragraph.id(): The paragraph ID.
+ *   - paragraph.bundle(): The type of the paragraph, for example, "image" or "text".
+ *   - paragraph.getOwnerId(): The user ID of the paragraph author.
+ *   See Drupal\paragraphs\Entity\Paragraph for a full list of public properties
+ *   and methods for the paragraph object.
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ * - fields available:
+ *   - field_p_block_class
+ *   - field_p_block_text_side
+ *   - field_p_block_title
+ *   - field_p_block_text
+ *   - field_p_block_quote
+ *   - field_p_block_logo
+ *   - field_p_block_photo
+ *   - field_p_block_text_bottom
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    block_text_side,
+    block_class
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      {# Section Title #}
+      <div class="col">
+        <div class="row">
+          <div class="gradient-title-block mb-3 mb-sm-5">
+            <div class="gradient-wrapper bg-gradient">
+              <div class="bg-black">
+                {{ content.field_p_block_title }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-xl">
+        {# Columns #}
+        <div class="row">
+          <div class="col-sm-6 px-sm-3">
+            <div class="side side-left">
+              <div class="side--logo">
+                {{ content.field_p_block_logo }}
+              </div>
+              <div class="side--picture mb-1 mb-sm-3">
+                {{ content.field_p_block_photo}}
+              </div>
+              <div class="side--text-bottom">
+                {{ content.field_p_block_text_bottom }}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 px-sm-3">
+            <div class="side side-right">
+              <div class="side--content">
+                {{ content.field_p_block_text }}
+              </div>
+              <div class="side--quote">
+                <blockquote>
+                  <span class="quote-sign"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.03 30"><defs><style>.cls-1{font-size:27.03px;fill:#000;font-family:BwGradual-Bold, Bw Gradual;font-weight:700;}</style></defs><g data-name="Warstwa 2"><g data-name="Layer 1"><text class="cls-1" transform="translate(12.03 6.49) rotate(180)">”</text></g></g></svg></span>
+                  {{ content.field_p_block_quote }}
+                </blockquote>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

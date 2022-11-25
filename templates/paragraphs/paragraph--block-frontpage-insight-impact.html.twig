@@ -1,0 +1,56 @@
+{%
+  set classes = [
+    'paragraph-founded-by',
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    block_class
+  ]
+%}
+
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    <div class="title-wrapper">
+      <h3 class="title">{{ title }}</h3>
+    </div>
+
+    <div class="field__items-wrapper grid">
+      {% for node in nodes %}
+        {% if node.type == 'citation' %}
+          <div class="field__item quote__item">
+            <div class="field__item-wrapper">
+              <div class="content">
+                <blockquote class="citation">{{ node.quote }}</blockquote>
+                {% if not node.author %}
+                  <p class="quote-author">{{ node.author }}</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div class="field__item {{ node.class }} {{ node.type|lower }}">
+            <a href="{{ node.url }}" class="field__item-wrapper {{ node.type|lower }}">
+              <div class="image">
+                <img src="{{ node.img_url }}" alt="{{ node.type }}" title="{{ node.label }}">
+              </div>
+              <div class="content">
+                <h3 class="type-article">{{ node.article_type }}</h3>
+                <h4 class="node-title">{{ node.label }}</h4>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {{ content.field_p_link }}
+  </div>
+{% endblock paragraph %}
+
+<div class="subscribe-webform">
+  <div class="container">
+    {{ drupal_entity('webform', 'subscribe') }}
+  </div>
+</div>
+

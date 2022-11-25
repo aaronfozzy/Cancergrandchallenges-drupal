@@ -1,0 +1,49 @@
+<section class="challenges-three-steps">
+    <div class="container">
+      <div class="blocks">
+        <div class="block" id="block-1">
+          <span>1</span>
+            <div class="button">Read our<br>guidelines</div>
+            <div class="text"><p>These include everything you need to know about eligibility requirements, how to build your application, the review process, and more.</p>
+
+              <a href="/media/33/download">Download the guidelines</a></div>
+            <div class="arrow" onclick="threeStepsClick(1);">
+              <i></i>
+            </div>
+        </div>
+
+        <div class="block" id="block-2">
+          <span>2</span>
+          <div class="button">Complete the<br>pre-submission<br>questionnaire</div>
+          <div class="text">
+            <p>This must be completed by your team’s Principal Investigator to help us confirm your eligibility.</p>
+            <p>You don’t need to have identified all your team members at this stage, but must have a clear understanding of the different roles and disciplines that will make up your team.</p>
+            <p>Deadline for pre-submission questionnaire: 1 April 2021</p>
+            <p>Complete the questionnaire</p>
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=L4lzROBx_EaN7Cc5ArUTSZRl50Y0V-FInQNbSBDEorVURjA2T1dSUlRKM1FRNzNKN0hWM1gzUExCTC4u">Complete the questionnaire</a></div>
+          <div class="arrow" onclick="threeStepsClick(2);">
+            <i></i>
+          </div>
+        </div>
+
+        <div class="block" id="block-3">
+          <span>3</span>
+          <div class="button">Complete your<br>expression<br>of interest</div>
+          <div class="text">
+            <p>We’ll get in touch to open your EOI after confirming your eligibility.</p>
+            <p>Filling out your EOI is straightforward: you'll need to provide an overview of how you'll tackle your chosen challenge and the team you'll assemble to do so.</p>
+            <p>Deadline for expression of interest: 22 April 2021</p>
+          </div>
+          <div class="arrow" onclick="threeStepsClick(3);">
+            <i></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script>
+    function threeStepsClick(id) {
+      let element = document.getElementById('block-' + id);
+      element.classList.toggle("active");
+    }
+  </script>
+</section>
