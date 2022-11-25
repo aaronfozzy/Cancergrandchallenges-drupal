@@ -1,0 +1,22 @@
+name: CRUK Custom Theme
+type: theme
+description: 'Custom Drupal 8 theme, based on Barrio and Bootstrap 4 framework.'
+# version: VERSION
+core: 8.x
+core_version_requirement: ^8 || ^9
+base theme: bootstrap_barrio
+logo: logo-static.png
+
+libraries:
+  - cruk/global-styling
+libraries-override:
+  bootstrap_barrio/global-styling: false
+  bootstrap_barrio/file: false
+regions:
+  header: 'Header'
+  navigation: 'Navigation'
+  content: 'Content'
+  footer: 'Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  hidden: 'Hidden - for referenced blocks'

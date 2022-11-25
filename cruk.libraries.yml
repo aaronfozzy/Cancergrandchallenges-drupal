@@ -1,0 +1,21 @@
+global-styling:
+  version: VERSION
+  js:
+    //cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js: {}
+    js/masonry.pkgd.min.js: {}
+    js/popper.min.js: {}
+    js/bootstrap.min.js: {}
+    js/global.js: {}
+    js/owl.carousel.min.js: {}
+    js/countdown.min.js: {}
+    js/scripts.js: {}
+  css:
+    component:
+      //cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css: {}
+      css/owl.carousel.min.css: {}
+      css/owl.theme.default.min.css: {}
+      css/style.css: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal

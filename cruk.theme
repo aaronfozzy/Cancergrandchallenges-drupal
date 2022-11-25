@@ -1,0 +1,545 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+use Drupal\media\Entity\Media;
+use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_form_system_theme_settings_alter() for settings form.
+ *
+ * Replace Barrio setting options with subtheme ones.
+ */
+function cruk_form_system_theme_settings_alter(&$form, FormStateInterface $form_state)
+{
+  $form['components']['navbar']['bootstrap_barrio_navbar_top_background']['#options'] = array(
+    'bg-primary' => t('Primary'),
+    'bg-secondary' => t('Secondary'),
+    'bg-light' => t('Light'),
+    'bg-dark' => t('Dark'),
+    'bg-white' => t('White'),
+    'bg-transparent' => t('Transparent'),
+  );
+  $form['components']['navbar']['bootstrap_barrio_navbar_background']['#options'] = array(
+    'bg-primary' => t('Primary'),
+    'bg-secondary' => t('Secondary'),
+    'bg-light' => t('Light'),
+    'bg-dark' => t('Dark'),
+    'bg-white' => t('White'),
+    'bg-transparent' => t('Transparent'),
+  );
+}
+
+/**
+ * Implements template_preprocess_html().
+ */
+function cruk_preprocess_html(&$variables)
+{
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if ($node instanceof NodeInterface && $node->hasField('field_page_blocks') && !$node->get('field_page_blocks')->isEmpty()) {
+    try {
+      $references_entities = $node->get('field_page_blocks')->referencedEntities();
+      $type = $references_entities[0]->getType();
+
+      if ($type === 'block_hero' || $type === 'block_hero_with_slider') {
+        $variables['attributes']['class'][] = 'has-hero';
+      }
+    } catch (Exception $e) {
+      // Log the exception to watchdog.
+      \Drupal::logger('type')->error($e->getMessage());
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_paragraph().
+ */
+function cruk_preprocess_paragraph(&$variables)
+{
+  $paragraph = $variables['elements']['#paragraph'];
+
+  $variables['block_class'] = '';
+
+  if ($paragraph->hasField('field_p_block_class') && !$paragraph->get('field_p_block_class')->isEmpty()) {
+    $variables['block_class'] = $paragraph->get('field_p_block_class')->value;
+    unset($variables['content']['field_p_block_class']);
+  }
+
+  $paragraph_id = $paragraph->id();
+  $variables['attributes']['id'] = 'paragraph-id-' . $paragraph_id;
+}
+
+/**
+ * Implements template_preprocess_paragraph().
+ */
+function cruk_preprocess_paragraph__block_hero(&$variables)
+{
+  $paragraph = $variables['elements']['#paragraph'];
+
+  $variables['block_hero_style'] = 'hero-style-none';
+
+  if ($paragraph->hasField('field_p_block_hero_style') && !$paragraph->get('field_p_block_hero_style')->isEmpty()) {
+    $style = $paragraph->get('field_p_block_hero_style')->value;
+    unset($variables['content']['field_p_block_hero_style']);
+    $variables['block_hero_style'] = 'hero-style-' . $style;
+  }
+}
+
+/**
+ * Implements template_preprocess_paragraph().
+ */
+function cruk_preprocess_paragraph__block_gradient_square(&$variables)
+{
+  $paragraph = $variables['elements']['#paragraph'];
+
+  $variables['block_gradient'] = 'gradient-none';
+
+  if ($paragraph->hasField('field_p_block_bg_gs') && !$paragraph->get('field_p_block_bg_gs')->isEmpty()) {
+    $gradient = $paragraph->get('field_p_block_bg_gs')->value;
+    unset($variables['content']['field_p_block_bg_gs']);
+    $variables['block_gradient'] = $gradient;
+  }
+}
+
+/**
+ * Implements template_preprocess_paragraph().
+ */
+function cruk_preprocess_paragraph__block_countdown(&$variables)
+{
+  $paragraph = $variables['elements']['#paragraph'];
+
+  $variables['block_countdown_style'] = 'countdown-style-none';
+
+  if ($paragraph->hasField('field_p_block_countdown_style') && !$paragraph->get('field_p_block_countdown_style')->isEmpty()) {
+    $style = $paragraph->get('field_p_block_countdown_style')->value;
+    unset($variables['content']['field_p_block_countdown_style']);
+    $variables['block_countdown_style'] = 'countdown-style-' . $style;
+  }
+}
+
+/**
+ * Implements template_preprocess_paragraph().
+ */
+function cruk_preprocess_paragraph__block_image_text_link(&$variables)
+{
+  $paragraph = $variables['elements']['#paragraph'];
+
+  $variables['block_style'] = 'block-style-none';
+
+  if ($paragraph->hasField('field_p_block_itl_style') && !$paragraph->get('field_p_block_itl_style')->isEmpty()) {
+    $style = $paragraph->get('field_p_block_itl_style')->value;
+    unset($variables['content']['field_p_block_itl_style']);
+    $variables['block_style'] = 'block-style-' . $style;
+  }
+}
+
+/**
+ * Implements template_preprocess_paragraph().
+ */
+function cruk_preprocess_paragraph__block_countdown__short(&$variables)
+{
+  $paragraph = $variables['elements']['#paragraph'];
+  $block = $paragraph->field_p_block_countdown->referencedEntities();
+  $block = reset($block);
+
+  if ($block) {
+    $time_value = $block->field_countdown_date->value;
+    $event = strtotime($time_value);
+    $today = time();
+    $countdown = floor(($event - $today) / 86400);
+    $variables['deadline'] = \Drupal\Core\Datetime\DrupalDateTime::createFromTimestamp($event)->format('d/m/y');
+    $variables['countdown'] = $countdown;
+  }
+}
+
+/**
+ * Implements template_preprocess_paragraph().
+ */
+function cruk_preprocess_paragraph__block_title_text_images_quote(&$variables)
+{
+  $paragraph = $variables['elements']['#paragraph'];
+
+  $variables['block_text_side'] = 'text-side-none';
+
+  if ($paragraph->hasField('field_p_block_text_side') && !$paragraph->get('field_p_block_text_side')->isEmpty()) {
+    $side = $paragraph->get('field_p_block_text_side')->value;
+    unset($variables['content']['field_p_block_text_side']);
+    $variables['block_text_side'] = 'text-side-' . $side;
+  }
+}
+
+function cruk_preprocess_node(&$variables)
+{
+  $variables['node_teaser'] = ['body'][0]['summary'];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function cruk_theme_suggestions_paragraph_alter(&$suggestions, $variables)
+{
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['elements']['#paragraph'];
+  $type = $paragraph->getType();
+
+  switch ($type) {
+    case 'placeholder':
+      $style_field = 'field_placeholder_id';
+      if ($paragraph->hasField($style_field) && !$paragraph->get($style_field)->isEmpty()) {
+        $style = str_replace('-', '_', $paragraph->get($style_field)->value);
+        $suggestions[] = 'paragraph__' . $type . '__' . $style;
+      }
+      break;
+    case 'block_hero':
+      $style_field = 'field_p_block_hero_style';
+      if ($paragraph->hasField($style_field) && !$paragraph->get($style_field)->isEmpty()) {
+        $style = str_replace('-', '_', $paragraph->get($style_field)->value);
+        $suggestions[] = 'paragraph__' . $type . '__' . $style;
+      }
+      break;
+    case 'block_countdown':
+      $style_field = 'field_p_block_countdown_style';
+      if ($paragraph->hasField($style_field) && !$paragraph->get($style_field)->isEmpty()) {
+        $style = str_replace('-', '_', $paragraph->get($style_field)->value);
+        $suggestions[] = 'paragraph__' . $type . '__' . $style;
+      }
+      break;
+    case 'block_title_text_images_quote':
+      $style_field = 'field_p_block_text_side';
+      if ($paragraph->hasField($style_field) && !$paragraph->get($style_field)->isEmpty()) {
+        $style = str_replace('-', '_', $paragraph->get($style_field)->value);
+        $suggestions[] = 'paragraph__' . $type . '__' . $style;
+      }
+      break;
+    case 'block_image_text_link':
+      $style_field = 'field_p_block_itl_style';
+      if ($paragraph->hasField($style_field) && !$paragraph->get($style_field)->isEmpty()) {
+        $style = str_replace('-', '_', $paragraph->get($style_field)->value);
+        $suggestions[] = 'paragraph__' . $type . '__' . $style;
+      }
+      break;
+    case 'title_text':
+      $parent = $paragraph->getParentEntity();
+      if ($parent !== NULL && $parent->getEntityTypeId() === 'paragraph') {
+        $suggestions[] = 'paragraph__' . $type . '__' . $parent->bundle();
+      }
+      break;
+    case 'title_subtitle':
+      $parent = $paragraph->getParentEntity();
+      if ($parent !== NULL && $parent->getEntityTypeId() === 'paragraph') {
+        $suggestions[] = 'paragraph__' . $type . '__' . $parent->bundle();
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function cruk_theme_suggestions_page_alter(array &$suggestions, array $variables)
+{
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $suggestions[] = 'page__' . $node->bundle();
+  }
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function cruk_page_attachments_alter(array &$page)
+{
+  /*foreach ($page['#attached']['html_head'] as $key => $element) {
+
+    if (
+      $element[1] == 'twitter_cards_image'
+      || $element[1] == 'og_image_0'
+      || $element[1] == 'og_image_url_0'
+      || $element[1] == 'og_image_secure_url_0'
+    ) {
+      $route = \Drupal::routeMatch();
+      $params = $route->getParameters()->all();
+
+      if (is_object($params['node']) && $params['node']->hasField('field_article_media') && !$params['node']->get('field_article_media')->isEmpty()) {
+        $fid = $params['node']->get('field_article_media')->referencedEntities()[0]->field_media_image->target_id;
+        if (is_numeric($fid)) {
+          $file = File::load($fid);
+          $url = $file->createFileUrl() == file_url_transform_relative(file_create_url($file->getFileUri()));
+          $page['#attached']['html_head'][$key][0]['#attributes']['content'] = $url;
+        }
+      }
+
+      if (is_object($params['node']) && $params['node']->hasField('field_team_photo') && !$params['node']->get('field_team_photo')->isEmpty()) {
+        if (is_numeric($fid)) {
+          $file = File::load($fid);
+          $url = $file->createFileUrl() == file_url_transform_relative(file_create_url($file->getFileUri()));
+          $page['#attached']['html_head'][$key][0]['#attributes']['content'] = $url;
+        }
+      }
+
+      if (is_object($params['node']) && $params['node']->hasField('field_challenge_hero') && !$params['node']->get('field_challenge_hero')->isEmpty()) {
+        if (is_numeric($fid)) {
+          $file = File::load($fid);
+          $url = $file->createFileUrl() == file_url_transform_relative(file_create_url($file->getFileUri()));
+          $page['#attached']['html_head'][$key][0]['#attributes']['content'] = $url;
+        }
+      }
+
+      if (is_object($params['node']) && $params['node']->hasField('field_team_member_photo') && !$params['node']->get('field_team_member_photo')->isEmpty()) {
+        if (is_numeric($fid)) {
+          $file = File::load($fid);
+          $url = $file->createFileUrl() == file_url_transform_relative(file_create_url($file->getFileUri()));
+          $page['#attached']['html_head'][$key][0]['#attributes']['content'] = $url;
+        }
+      }
+
+      if (is_object($params['node']) && $params['node']->hasField('field_twitter_cards_image') && !$params['node']->get('field_twitter_cards_image')->isEmpty()) {
+        $fid = $params['node']->get('field_twitter_cards_image')->referencedEntities()[0]->field_media_image->target_id;
+        if (is_numeric($fid)) {
+          $file = File::load($fid);
+          $url = $file->createFileUrl() == file_url_transform_relative(file_create_url($file->getFileUri()));
+          $page['#attached']['html_head'][$key][0]['#attributes']['content'] = $url;
+        }
+      }
+    }
+  }*/
+
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function cruk_preprocess_paragraph__block_hero_with_slider(&$vars)
+{
+  /** @var \Drupal\paragraphs\Entity\Paragraph */
+  $paragraph = $vars['paragraph'];
+
+  if ($paragraph->hasField('field_p_block_class') && !$paragraph->get('field_p_block_class')->isEmpty()) {
+    $vars['attributes']['class'][] = $paragraph->field_p_block_class->value;
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+
+function cruk_preprocess_paragraph__block_gradient_line_links(&$vars)
+{
+  /** @var \Drupal\paragraphs\Entity\Paragraph */
+  $paragraph = $vars['paragraph'];
+  $paragraph_links = $paragraph->field_p_links->getValue();
+
+  $vars['p_links'] = [];
+  foreach ($paragraph_links as $paragraph_link) {
+    $paragraph = Paragraph::load($paragraph_link['target_id']);
+    $link = current($paragraph->get('field_links')->getValue());
+
+    $vars['p_links'][] = [
+      'link' => [
+        'title' => $link['title'],
+        'url' => Url::fromUri($link['uri'])->toString(),
+      ],
+      'class' => $paragraph->field_p_background->value,
+    ];
+  }
+
+  $vars['gr_video'] = drupal_get_path('theme', 'cruk') . '/media/bg-gradient.mp4';
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function cruk_preprocess_paragraph__video_slide(&$vars)
+{
+  /** @var \Drupal\paragraphs\Entity\Paragraph */
+  $paragraph = $vars['paragraph'];
+
+  if ($paragraph->hasField('field_p_media') && !$paragraph->get('field_p_media')->isEmpty()) {
+    $vars['slide']['title'] = $paragraph->field_p_block_title->value;
+    $vars['slide']['subtitle'] = $paragraph->field_p_block_subtitle->value;
+    $style = ImageStyle::load('video_slide');
+    $pmedia_field = $paragraph->field_p_media->target_id;
+    $media = Media::load($pmedia_field);
+
+    if ($media->hasField('thumbnail') && !$media->get('thumbnail')->isEmpty()) {
+      $thumb_field = $media->thumbnail->target_id;
+      $thumbnail = File::load($thumb_field);
+
+      $vars['thumbnail']['url'] = $style->buildUrl($thumbnail->getFileUri());
+      $vars['thumbnail']['alt'] = $media->name->value;
+    }
+
+    if ($media->hasField('field_media_oembed_video') && !$media->get('field_media_oembed_video')->isEmpty()) {
+      $vars['video']['url'] = $media->field_media_oembed_video->value;
+    }
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+
+function cruk_preprocess_paragraph__block_frontpage_insight_impact(&$vars)
+{
+  /** @var \Drupal\paragraph\Entity\Paragraph */
+  $paragraph = $vars['paragraph'];
+  $count = 1;
+  // Title of block
+  $vars['title'] = $paragraph->field_p_block_title->value;
+  // Field with quote
+  $quote_id = $paragraph->field_p_citation->target_id;
+
+  $paragraph_ids = $paragraph->get('field_p_article_types')->getValue();
+  foreach ($paragraph_ids as $paragraph_id) {
+    /** @var \Drupal\paragraph\Entity\Paragraph */
+    $paragraph = Paragraph::load($paragraph_id['target_id']);
+    $nid = $paragraph->field_p_article_ref->target_id;
+    /** @var \Drupal\node\Entity\Node */
+    $node = Node::load($nid);
+
+    $tax_id = $node->field_article_type->target_id;
+    $type = Term::load($tax_id)->get('name')->value;
+
+    $style_standard = ImageStyle::load('impact_standard_image');
+    $style_big = ImageStyle::load('impact_big_image');
+
+    if ($node->hasField('field_article_media') && !$node->get('field_article_media')->isEmpty()) {
+      $media_id = $node->field_article_media->target_id;
+      $media = Media::load($media_id);
+
+      if ($media->hasField('field_media_image')) {
+        $img_id = $media->field_media_image->target_id;
+        $img = File::load($img_id);
+
+        if ($count < 3) {
+          $img_url = $style_big->buildUrl($img->getFileUri());
+          $class = "big-image-{$count}";
+        } else {
+          $img_url = $style_standard->buildUrl($img->getFileUri());
+          $class = "standard-image";
+        }
+        $count++;
+      } else {
+        $thumb_id = $media->thumbnail->target_id;
+        $thumb = File::load($thumb_id);
+        $thumb_url = $style_standard->buildUrl($thumb->getFileUri());
+        $class = "standard-image";
+      }
+
+      $vars['nodes'][] = [
+        'url' => $node->toUrl()->toString(),
+        'label' => $node->label(),
+        'article_type' => ($type == 'Video') ? 'Watch' : $type,
+        'img_url' => ($type == 'Video') ? $thumb_url : $img_url,
+        'type' => $type,
+        'class' => (isset($class) && !empty($class)) ? $class : '',
+      ];
+    }
+  }
+
+  // Quote data
+  $author = '';
+  $quote = '';
+  $paragraph_quote = Paragraph::load($quote_id);
+  if ($paragraph_quote->hasField('field_p_quote_author') && !$paragraph_quote->get('field_p_quote_author')->isEmpty()) {
+    $author = $paragraph_quote->field_p_quote_author->value;
+  }
+
+  if ($paragraph_quote->hasField('field_p_quote_text') && !$paragraph_quote->get('field_p_quote_text')->isEmpty()) {
+    $quote = $paragraph_quote->field_p_quote_text->value;
+  }
+
+  $vars['nodes'][] = [
+    'type' => 'citation',
+    'author' => $author,
+    'quote' => $quote
+  ];
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+
+function cruk_preprocess_paragraph__link(&$vars)
+{
+  /** @var \Drupal\paragraphs\Entity\Paragraph */
+  $paragraph = $vars['paragraph'];
+
+  $vars['attributes']['class'] = $paragraph->field_p_background->value;
+  $link = $paragraph->get('field_links')->getValue();
+
+  $vars['link'] = [
+    'uri' => Url::fromUri($link[0]['uri'])->toString(),
+    'title' => $link[0]['title'],
+  ];
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function cruk_preprocess_paragraph__block_teams_slider(&$vars)
+{
+  /** @var \Drupal\paragraphs\Entity\Paragraph */
+  $paragraph = $vars['paragraph'];
+
+  if ($paragraph->hasField('field_para_slider') && !$paragraph->get('field_para_slider')->isEmpty()) {
+    $slides_value = $paragraph->field_para_slider->getValue('target_id');
+    $slide_ids = _array_value_recursive('target_id', $slides_value);
+
+    $slides = Paragraph::loadMultiple($slide_ids);
+  }
+}
+
+
+/**
+* Implements hook_preprocess_HOOK().
+*/
+function cruk_preprocess_paragraph__image_text_slide(&$vars) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph */
+  $paragraph = $vars['paragraph'];
+
+  if ($paragraph->hasField('field_p_media') && !$paragraph->get('field_p_media')->isEmpty()) {
+    $image_style = ImageStyle::load('impact_big_image');
+    $field_media = $paragraph->field_p_media->target_id;
+
+    $media = Media::load($field_media);
+    $media_field = $media->field_media_image->target_id;
+
+    $file = File::load($media_field);
+    $vars['img'] = [
+      'url' => $image_style->buildUrl($file->getFileUri()),
+      'alt' => $media->thumbnail->alt
+    ];
+  }
+
+  if ($paragraph->hasField('field_p_link') && !$paragraph->get('field_p_link')->isEmpty()) {
+    $vars['slide']['url'] = Url::fromUri($paragraph->field_p_link->uri);
+  }
+}
+
+
+function _array_value_recursive($key, $arr)
+{
+  $val = [];
+  array_walk_recursive($arr, function ($v, $k) use ($key, &$val) {
+    if ($k == $key) array_push($val, $v);
+  });
+  return count($val) > 1 ? $val : array_pop($val);
+}
