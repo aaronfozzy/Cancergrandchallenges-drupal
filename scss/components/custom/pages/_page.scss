@@ -1,0 +1,26 @@
+.node--type-basic-page {
+    .node__title {
+        margin: 2.7rem 0;
+        @media (max-width:768px){
+            margin: 1.7rem 0;
+        }
+    }
+}
+
+.text-summary {
+  margin: 50px 0;
+}
+
+.node--type-team .navbar-dark .navbar-brand {
+  max-width: 95px;
+  
+  @media (min-width: 480px) {
+    max-width: 100%;
+  }
+}
+
+
+
+.dialog-off-canvas-main-canvas {
+  overflow: hidden;
+}

@@ -1,0 +1,177 @@
+.node--type-challenge {
+  #content {
+    padding: 0;
+  }
+}
+
+.article--type-challenge {
+  .node__content {
+    margin: 0;
+  }//node__content
+
+  .challenge-hero {
+    .challenge-hero-image {
+      background-color: black;
+      padding: 100px 0 0;
+      @media (min-width: 768px) {
+        padding: 0;
+      }
+
+      .field--name-field-challenge-hero {
+        margin: 0;
+      }//field--name-field-challenge-hero
+
+      img {
+        max-width: 100%;
+        margin-bottom: 0;
+        height: auto;
+      }
+    }//challenge-hero-image
+
+    .challenge-description {
+      padding: 3em;
+      text-align: center;
+
+      p:last-of-type {
+        margin-bottom: 0;
+      }
+
+      @media (max-width:768px){
+        padding: 2em 1em 1em;
+      }
+    }
+  }//challenge-hero
+
+  .challenge-context {
+    background-color: black;
+    color: white;
+
+    .container {
+      padding: 3em 1em;
+    }
+
+    .field--type-text-long {
+      padding: 0 5px;
+
+      @media (min-width:768px) {
+        padding: 0;
+      }
+    }
+
+    .field__label {
+      font-family: 'Bw Gradual', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5em;
+    }
+
+    .field__item {
+      column-count: 2;
+
+      @media (max-width:768px){
+        column-count: 1;
+      }
+    }
+  }
+
+  .gradient-border-block {
+    margin-bottom: 20px;
+
+    .container {
+      margin-bottom: 2em;
+
+      @media (max-width: 768px){
+        margin-bottom: 4em;
+      }
+    }
+
+    h2 {
+      font-family: 'Bw Gradual', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5em;
+      font-weight: 500;
+    }
+  }
+
+  .challenges-back {
+    padding: 2em 0 3em;
+
+    .challenges-back-link {
+      color: black;
+      text-decoration: underline;
+    }
+  }
+
+  .opportunities-block {
+    background-color: black;
+    color: white;
+
+    .field--name-field-challenge-left-col-text {
+      padding: 0 1.5em;
+
+      @media (max-width:576px){
+        padding: 0;
+      }
+
+      h2 {
+        font-family: 'Bw Gradual', serif;
+        font-size: 1.75rem;
+        margin-bottom: 0.5em;
+        font-weight: 500;
+      }
+    }
+
+    .field--name-field-challenge-left-col-image {
+      @media (max-width:575px){
+        float: none;
+        text-align: center;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    .field--name-field-challenge-right-col-text {
+      margin-top: 2.4em;
+
+      @media (max-width:1200px){
+        margin-top: 4.3em;
+      }
+
+      @media (max-width:575px){
+        margin-top: 0;
+      }
+
+      li {
+        margin-bottom: 1em;
+      }
+    }
+  }
+
+  .vision-impact {
+    text-align: center;
+    padding-top: 3em;
+    padding-bottom: 3em;
+
+    .field__label {
+      font-family: 'Bw Gradual', serif;
+      font-size: 1.75rem;
+      margin-bottom: 0.5em;
+      font-weight: 400;
+    }
+  }
+
+  .text-bottom-block {
+    background-color: black;
+    color: white;
+    text-align: center;
+
+    h2 {
+      font-family: 'Bw Gradual', serif;
+      font-size: 1.75rem;
+      margin-bottom: 0.5em;
+      font-weight: 500;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.node--type-basic-page {
+  .article-body .field--name-field-page-blocks {
+    //&>:first-child {
+      .paragraph--type--block-side-title-text {
+        @media (min-width:768px){
+          margin-top: 5rem;
+        }        
+      }
+    //}
+  }
+
+  @media (max-width:768px){ 
+    .paragraph:not(.paragraph--type--block-hero) {
+      margin-bottom: 3em;
+    }
+  }
+  .paragraph--type--block-side-title-text {
+    margin-bottom: 2em;
+    @media (min-width:768px){
+      .col-md-4 {
+        margin-bottom: -5em;
+      }
+    }//min-width
+  }
+}

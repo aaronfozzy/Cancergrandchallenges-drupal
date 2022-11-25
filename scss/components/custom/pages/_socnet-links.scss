@@ -1,0 +1,59 @@
+.socnet-links {
+  display: none;
+  margin-left: 10px;
+
+  @media (min-width: 480px) {
+    display: flex;
+  }
+
+  .socnet-link {
+    display: block;
+    height: 24px;
+    margin-left: 15px;
+    width: 24px;
+  }
+
+  .icon {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+  }
+
+  /* .icon-instagram {
+    background-image: url('/themes/custom/cruk/images/icons/instagram.svg');
+  } */
+
+  .icon-twitter {
+    background-image: url('/themes/custom/cruk/images/icons/twitter.svg');
+  }
+
+  .icon-linkedin {
+    background-image: url('/themes/custom/cruk/images/icons/linkedin.svg');
+  }
+
+  .icon-vimeo {
+    background-image: url('/themes/custom/cruk/images/icons/vimeo.svg');
+  }
+}
+
+.menu--main {
+
+  .socnet-links {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+
+    @media (min-width: 480px) {
+      display: none;
+    }
+  }
+}
+
+
+.is-opened-search {
+
+  .socnet-links { display: none; }
+}

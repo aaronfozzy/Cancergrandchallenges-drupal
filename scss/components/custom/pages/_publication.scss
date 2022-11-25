@@ -1,0 +1,46 @@
+.node--type-publication {
+  background: #000;
+  .publication-page {
+    padding: 3em 0 0 0;
+    background: #fff;
+    @media (max-width: 575px) {
+      padding: 0;
+    }
+
+    .filtered-publications {
+      .views-row {
+        min-height: 264px;
+
+        @media (max-width: 575px) {
+          padding-top: 3em;
+        }
+
+        .views-field-field-publication-abstract {
+          max-height: calc(0.75rem * 7 * 1.5);
+          overflow-y: auto;
+        }
+
+        .read-more-link {
+          margin-top: 16px;
+
+          @media screen and (min-width: 576px) {
+            flex: 0 0 100%;
+          }
+
+          a {
+            @include read-more-arrow;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    a.all-publications {
+      margin: 3em 0;
+      color: #343a40;
+      display: inline-block;
+      text-decoration: underline;
+    }
+  }
+}
+

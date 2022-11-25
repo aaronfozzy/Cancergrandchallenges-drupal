@@ -1,0 +1,312 @@
+$desktop: 768px;
+$mobile:468px;
+$large-screen:1200px;
+
+.node--type-team {
+
+  .section-hero {
+
+    .team-name {
+      width: 320px;
+      height: 320px;
+      display: flex;
+      flex-flow: column wrap;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      margin: 50px auto;
+      border-radius: 50%;
+
+      .title {
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        color: #000;
+        text-align: center;
+      }
+
+    }
+
+    .team-details {
+      color: #ffffff;
+      margin-left: -15px;
+      margin-right: -15px;
+
+      .row {
+        width: 100%;
+        padding: 15px 0;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      & > .row {
+        margin-left: 0;
+        margin-right: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .tile {
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+
+      .field {
+        &__label {
+          font-size: 0.65rem;
+          text-transform: uppercase;
+          border-bottom: 1px solid white;
+        }
+
+        &__item {
+          font-size: 1rem;
+        }
+      }
+    }
+
+
+  }
+
+  .team--funded-by {
+    margin-top: 5em;
+    @media (min-width: 768px) {
+      margin-top: 150px;
+    }
+
+    h3 {
+      font-weight: normal;
+      font-size: 1rem;
+    }
+
+    img {
+      width: 300px;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .section-title {
+    max-width: 700px;
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+  }
+
+  .section-content {
+
+    .gradient-back {
+      max-width: 385px;
+    }
+
+    .team-member {
+      &--photo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+
+        @media (min-width: 576px) {
+          justify-content: flex-start;
+        }
+
+        img {
+          border-radius: 50%;
+          max-width: 250px;
+          height: auto;
+        }
+      }
+
+      &--name {
+        clear: both;
+        font-size: 1.25rem;
+        margin-bottom: 0px;
+      }
+
+      &--title {
+        font-size: 0.76rem;
+        margin-bottom: 0px;
+      }
+    }
+
+    .team-photo {
+      max-width: 450px;
+      margin: auto;
+      margin-top: 3rem;
+      @media (min-width: 768px) {
+        margin-top: 200px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    .team-timeline {
+
+      .gradient-back {
+
+        @include media-breakpoint-up(sm) {
+          margin: -100px -40px 40px 5px;
+        }
+
+        &:before {
+          margin: 40px -40px -40px 40px;
+        }
+      }
+
+      &-title {
+        font-family: 'Bw Gradual', serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+
+      &-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 1em;
+      }
+
+      &-bg {
+        position: relative;
+        min-height: 125px;
+        width: 100%;
+        background: url("../images/timeline.svg") no-repeat;
+        background-size: cover;
+        background-position-y: bottom;
+      }
+
+      &-item-toggle {
+        position: absolute;
+        display: flex;
+        bottom: 10px;
+        right: 10px;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background: #000;
+        z-index: 10;
+
+        &:before,
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 20%;
+          top: 45%;
+          width: 12px;
+          border: 1px solid #FFF;
+          transition: .5s ease;
+          border-radius: 50px;
+        }
+        &:before {
+          transform: rotate(90deg);
+        }
+        &:after {
+          transform: rotate(0deg);
+        }
+      }
+
+    }
+  }
+
+  .modal-backdrop {
+    background-color: #FFF;
+
+    &.show {
+      opacity: 0.7;
+    }
+  }
+
+}
+
+.team-committee {
+  margin-top: -5em;
+  margin-bottom: 5rem;
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
+}
+
+.gradient-back.mb-3.mb-sm-5.p-3 {
+    top: 60px;
+}
+
+.clearfix.text-formatted.field.field--name-field-right-column-text-1.field--type-text-long.field--label-hidden.field__item.quickedit-field {
+    position: relative;
+    top: 80px;
+}
+
+.colour-quote-second {
+    position: relative;
+    top: 80px;
+    @media (max-width: $desktop) {
+      position: relative;
+      top: 30px;
+    }
+}
+
+.team-description--content {
+    @media (max-width: $desktop) {
+      margin-top: 60px;
+    }
+}
+
+.gradient-back.mb-3.mb-sm-5.px-3 {
+  @media (max-width: 575px) {
+    left: 50px!important;
+  }
+  @media (max-width: 768px) {
+    left: -20px;
+  }
+  @media (min-width: 576px) {
+    left: -20px;
+  }
+}
+
+.statistic1 {
+    width: 300px;
+    position: relative;
+    top: 15px;
+}
+
+.statistic-researchers {
+    width: 300px;
+    font-weight: bold;
+    font-size:60px
+}
+
+.statistic-location {
+    width: 300px;
+}
+
+.statistic-investigators {
+    width: 300px;
+
+}
+
+.statistic-specialisms {
+    width: 300px;
+}
+
+.team-funded.item {
+    position: relative;
+    bottom: 30px;
+}
+
+.investigators-collaborators.item {
+    position: relative;
+    bottom: 0px;
+    @media (max-width: $desktop){
+      position: relative;
+      bottom: 30px;
+    }
+    @media (min-width: $large-screen){
+      position: relative;
+      bottom: 30px;
+    }
+}
+
+.countries-involved.item {
+  position: relative;
+  bottom: 30px;
+}

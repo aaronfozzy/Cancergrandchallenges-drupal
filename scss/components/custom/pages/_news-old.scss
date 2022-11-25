@@ -1,0 +1,116 @@
+.container.news-insight-old {
+  h1 {
+    background: linear-gradient(to right bottom, #ffe600, #ffa51e, #ff3232, #aa6ed7);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-left: -15px;
+    margin-top: 80px;
+    margin-bottom: 64px;
+    padding-left: 35px;
+    padding-right: 35px;
+    display: inline-block;
+  }
+  .news-container {
+    .view-content.row {
+      //justify-content: space-evenly; // doesn't support IE11
+      justify-content: space-between;
+      @media (max-width: 576px) {
+        justify-content: space-around;
+      }
+
+      .views-row {
+        width: 30%;
+        @media (max-width:991px){
+          width: 45%;
+        }
+        @media (max-width:767px){
+
+        }
+        @media (max-width:575px){
+          width: 95%;
+
+        }
+
+        .news-item {
+          font-family: 'Bw Gradual', serif;
+          margin-bottom: 32px;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          @media (min-width: 575px) {
+            height: 100%;
+            &:after {
+              margin-bottom: 20px;
+            }
+          }
+          &:after {
+            display: block;
+            content: ' ';
+            height: 16px;
+            background: linear-gradient(to right bottom, #ffe600, #ffa51e, #ff3232, #aa6ed7);
+          }
+          .media {
+            width: 100%;
+
+            a {
+              width: 100%;
+              display: block;
+
+              img {
+                width: 100%;
+                object-fit: cover;
+                height: 240px;
+              }
+            }
+          }
+          .meta {
+            background-color: #000;
+            margin: 0;
+            color: #fff;
+            padding: 24px;
+            height: 100%;
+
+            .type {
+              text-transform: uppercase;
+              text-decoration: underline;
+              font-weight: 500;
+              margin-bottom: 12px;
+            }
+            .title {
+              //height: 50px; //remove squashed
+              line-height: 24px;
+
+              a {
+                color: #fff;
+                font-weight: 500;
+              }
+            }
+            .body {
+              font-size: 0.8rem;
+              margin-top: 12px;
+
+              * {
+                font-family: 'Bw Gradual', serif;
+                font-size: 0.8rem;
+                line-height: 1.2rem;
+              }
+
+              .views-more-link {
+                color: white;
+                text-decoration: underline;
+                clear: left;
+                display: block;
+                margin-top: 12px;
+              }
+            }
+            .created {
+              font-size: 0.8rem;
+              color: #fff;
+              margin-top: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
